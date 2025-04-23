@@ -1,18 +1,15 @@
 package projetoFinal;
+
 import java.util.Scanner;
 
 public class Principal {
 
-	public static void main(String[] args) {
-		
-		Scanner input = new Scanner(System.in);
-		
-		int escolhaNumero;
-		
-		String tituloTexto[] = new String [100];
-		String conteudoTexto[] = new String[100];
-		String tipoTexto[] = {"Manual de operação", "Procedimentos de segurança", "Manutenção e reparos", "Testes e diagnósticos", "Manual de conduta e Operações Setoriais"};
-		
+    static String tituloTexto[] = new String[100];
+    static String conteudoTexto[] = new String[100];
+    static String tipoTextoEscolhido[] = new String[100];
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
 		System.out.println("┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐");
 		System.out.println("│I8,        8        ,8I  88888888888  ,ad8888ba,           ,ad8888ba,                                   │");
 		System.out.println("│ 8b       d8b       d8   88          d8        8b         d8        8b                                  │");
@@ -23,24 +20,147 @@ public class Principal {
 		System.out.println("│    `8a8'     `8a8'      88          Y8a.    .a88         Y8a.    .a8P   88       88   8b   ,aa         │");
 		System.out.println("│      8         8        88888888888  `AY88888P              Y8888Y      88       88     Ybbd8          │");
 		System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────────────────┘");
+
+		String tipoTexto[] = {"Manual de operação", "Procedimentos de segurança", "Manutenção e reparos", "Testes e diagnósticos", "Manual de conduta e Operações Setoriais"};
+        String opcoesMenu[] = {"Cadastrar Orientação", "Pesquisar Orientação", "Editar Orientação", "Excluir Orientação", "Sair"};
+        int escolhaNumero;
+
+        do {
+            // Exibe o menu principal
+            for (int contador = 0; contador < opcoesMenu.length; contador++) {
+                System.out.print((contador + 1)  + "- ");
+                System.out.println(opcoesMenu[contador]);
+            }
+
+            escolhaNumero = input.nextInt();
+            input.nextLine(); // Limpa o buffer do Scanner
+
+            switch(escolhaNumero){
+                case 1:
+                    // Cadastrar Orientação
+                    cadastrarOrientacao(input, tipoTexto);
+                    break;
+                case 2:
+                    // Pesquisar Orientação
+                    break;
+                case 3:
+                    // Editar Orientação
+                    break;
+                case 4:
+                    // Excluir Orientação
+                    break;
+
+                case 5:
+
+                    System.out.println("Programa encerrado.");
+                    break;
+
+                default:
+
+                    System.out.println("Número inválido.");
+                    break;
+            }
+
+        } while (escolhaNumero != 5);
+
+        String mostrarTexto;
+
+        do{
+            System.out.println("Gostaria de ter acesso a todos os textos? (Sim/Não)");
+            mostrarTexto = input.nextLine();
+
+            if(!mostrarTexto.equalsIgnoreCase("Sim") && !mostrarTexto.equalsIgnoreCase("Não")){
+                System.out.println("Resposta inválida");
+            }
+
+            if(mostrarTexto.equalsIgnoreCase("Sim")){
+                mostrarTextos();
+            }
+
+            
+        }while (!mostrarTexto.equalsIgnoreCase("Sim") && !mostrarTexto.equalsIgnoreCase("Não"));
+    }
+
+    // Método para cadastrar uma nova orientação
+    private static void cadastrarOrientacao(Scanner input, String[] tipoTexto) {
+		String escolhaCadastro;
+		int escolhaTipoTexto;
 		
-		do {
-			
-			System.out.println("0- Sair");
-			for(int contador = 0; contador < 5; contador++) {
-				
-				System.out.print((contador+1) + "- ");
-				System.out.println(tipoTexto[contador]);
-			}
-			
-			escolhaNumero = input.nextInt();
-			
-			if(escolhaNumero > 5) {
-				System.out.println("Número inválido.");
-				continue;
-			}
-		}
-		while(escolhaNumero != 0);
-	}
+        int index = 10;
+
+        String tituloDigitado;
+        String conteudoDigitado;
+
+        do{
+            do{
+                for(int contador = 0; contador < 5; contador++) {
+            
+                    System.out.print((contador+1) + "- ");
+                    System.out.println(tipoTexto[contador]);
+                }
+    
+                escolhaTipoTexto = input.nextInt();
+                input.nextLine();
+    
+                if(escolhaTipoTexto > 5 || escolhaTipoTexto < 1){
+                    System.out.println("Número inválido");
+                }
+            }while(escolhaTipoTexto > 5 || escolhaTipoTexto < 1);
+            
+            if(escolhaTipoTexto == 1){
+                tipoTextoEscolhido[index] = "Manual de operação";
+            }
+            else if(escolhaTipoTexto == 2){
+                tipoTextoEscolhido[index] = "Procedimentos de segurança";
+            }
+            else if (escolhaTipoTexto == 3) {
+                tipoTextoEscolhido[index] = "Manutenção e reparos";
+            }
+            else if (escolhaTipoTexto == 4){
+                tipoTextoEscolhido[index] = "Testes e diagnósticos";
+            }
+            else if(escolhaTipoTexto == 5){
+                tipoTextoEscolhido[index] = "Manual de conduta e Operações Setoriais";
+            }
+    
+            System.out.println("Digite o título: ");
+            tituloDigitado = input.nextLine();
+            
+            tituloTexto[index] = tituloDigitado;
+            
+            System.out.println("Digite o conteúdo: ");
+            conteudoDigitado = input.nextLine();
+            
+            conteudoTexto[index] = conteudoDigitado;
+    
+            do{
+                System.out.println("Pretende cadastrar mais orientações?(Sim/Não)");
+                escolhaCadastro = input.nextLine();
+    
+                if(escolhaCadastro.equalsIgnoreCase("Sim")){
+                    index++;
+                }
+    
+                if(!escolhaCadastro.equalsIgnoreCase("Sim") && !escolhaCadastro.equalsIgnoreCase("Não")){
+                    System.out.println("Resposta inválida");
+                }
+                
+            }while(!escolhaCadastro.equalsIgnoreCase("Sim") && !escolhaCadastro.equalsIgnoreCase("Não"));
+        }while(escolhaCadastro.equalsIgnoreCase("Sim"));
+
+    }
+
+    static void mostrarTextos(){
+
+        for(int adress = 0; adress < tituloTexto.length && adress < conteudoTexto.length && adress < tipoTextoEscolhido.length; adress++){
+            
+            if(tituloTexto[adress] != null && conteudoTexto[adress] != null && tipoTextoEscolhido[adress] != null){
+                System.out.println("ID " + (adress + 1) + " -");
+                System.out.println("Título: " + tituloTexto[adress]);
+                System.out.println("Conteúdo: " + conteudoTexto[adress]);
+                System.out.println("Tipo: " + tipoTextoEscolhido[adress]);
+            }
+        }
+    }
 
 }
