@@ -64,7 +64,7 @@ public class Principal {
 				break;
 			case 4:
 				System.out.println("Sprache erfolgreich ausgewählt!");
-
+				break;
 
 		}
 
