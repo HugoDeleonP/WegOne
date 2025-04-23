@@ -1,9 +1,9 @@
 package projetoFinal;
 import java.util.Scanner;
 public class Principal {
-	Scanner imput=new Scanner(System.in);
+	
 	public static void main(String [] args) {
-
+	Scanner input=new Scanner(System.in);
 
 
 		System.out.println("	┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐");
@@ -49,7 +49,7 @@ public class Principal {
 		System.out.println("	ES-------¡Antes de empezar, añade tu idioma!(2)(Elige el número que representa este idioma.)");
 		System.out.println("	EN-USA---Before you start, add your language!(3)(Choose the number that represents this language.)");
 		System.out.println("	DIE------Bevor Sie beginnen, fügen Sie Ihre Sprache hinzu!(4)(Wähle die Zahl, die diese Sprache repräsentiert.)");
-		int lingua=imput.nextInt();
+		int lingua=input.nextInt();
 
 		switch(lingua){
 
