@@ -7,8 +7,17 @@ public class Principal {
     static String tituloTexto[] = new String[100];
     static String conteudoTexto[] = new String[100];
     static String tipoTextoEscolhido[] = new String[100];
+    
+    
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        
+        /*Texto[] textos = new Texto [100];
+        
+        // Método construtor
+        Texto texto1 = new Texto("Português", "Manual de operação", "titulo1", "conteudo1" );
+        textos[0] = texto1;*/
+        
         
 		System.out.println("┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐");
 		System.out.println("│I8,        8        ,8I  88888888888  ,ad8888ba,           ,ad8888ba,                                   │");
@@ -24,7 +33,7 @@ public class Principal {
 		String tipoTexto[] = {"Manual de operação", "Procedimentos de segurança", "Manutenção e reparos", "Testes e diagnósticos", "Manual de conduta e Operações Setoriais"};
         String opcoesMenu[] = {"Cadastrar Orientação", "Pesquisar Orientação", "Editar Orientação", "Excluir Orientação", "Sair"};
         int escolhaNumero;
-
+        
         do {
             // Exibe o menu principal
             for (int contador = 0; contador < opcoesMenu.length; contador++) {
@@ -38,7 +47,13 @@ public class Principal {
             switch(escolhaNumero){
                 case 1:
                     // Cadastrar Orientação
+                	
+                	System.out.println("Segue todos os textos registrados: ");
+                	mostrarTextos();
+                	
                     cadastrarOrientacao(input, tipoTexto);
+                    
+                    System.out.println("");
                     break;
                 case 2:
                     // Pesquisar Orientação
@@ -74,7 +89,7 @@ public class Principal {
             }
 
             if(mostrarTexto.equalsIgnoreCase("Sim")){
-                mostrarTextos();
+            	mostrarTextos();
             }
 
             
