@@ -215,8 +215,11 @@ public class Principal {
     
     
     static void mostrarTextos(){
-
-        for(int index = 0; index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length; index++){
+    	
+    	index = 0;
+    	int verificacaoListaVazia = 0;
+    	
+        while(index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length){
             
             if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
                 System.out.println("ID " + (index + 1) + " -");
@@ -224,6 +227,15 @@ public class Principal {
                 System.out.println("Conteúdo: " + conteudoTexto[index]);
                 System.out.println("Tipo: " + tipoTextoEscolhido[index]);
             }
+            
+            else {
+            	verificacaoListaVazia++;
+            }
+            
+            if(verificacaoListaVazia == 100) {
+            	System.out.println("Não há texto registrado.");
+            }
+            index++;
         }
     }
     
