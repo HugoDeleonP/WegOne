@@ -7,7 +7,7 @@ public class Principal {
     static String tituloTexto[] = new String[100];
     static String conteudoTexto[] = new String[100];
     static String tipoTextoEscolhido[] = new String[100];
-    
+    static int index;
     
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -63,6 +63,10 @@ public class Principal {
                     break;
                 case 4:
                     // Excluir Orientação
+                	
+                	
+                	
+                	excluirOrientacao(input);
                     break;
 
                 case 5:
@@ -101,7 +105,7 @@ public class Principal {
 		String repeticaoCadastro;
 		int escolhaTipoTexto;
 		
-        int index = 10;
+		index = 0;
 
         String tituloDigitado;
         String conteudoDigitado;
@@ -165,6 +169,51 @@ public class Principal {
 
     }
 
+    private static void excluirOrientacao(Scanner input) {
+    	
+    	String repeticaoExclusao;
+    	
+    	do {
+	        	System.out.println("Digite o id da orientação que deseja excluir: ");
+	        	int idDigitado = input.nextInt();
+	        	input.nextLine();
+	        	
+	        	index = idDigitado - 1;
+	        	
+            	if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null) {
+            		
+            		tituloTexto[index] = null;
+            		conteudoTexto[index] = null;
+            		tipoTextoEscolhido[index] = null;
+            		
+            		System.out.println("O texto foi excluído com sucesso!");
+            	}
+            	
+            	else if(tituloTexto[index] == null && conteudoTexto[index] == null && tipoTextoEscolhido[index] == null){
+            		System.out.println("O texto não existe.");
+            	}
+    		
+
+        	
+        	do {
+	        	System.out.println("Gostaria de excluir outro texto?(Sim/Não)");
+	        	repeticaoExclusao = input.nextLine();
+	        	
+	        	if(repeticaoExclusao.equalsIgnoreCase("Não")) {
+	        		break;
+	        	}
+	        	
+	        	if(!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não")) {
+	        		System.out.println("Resposta inválida");
+	        	}
+	        	
+        	}while(!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não"));
+        	
+    	}while(repeticaoExclusao.equalsIgnoreCase("Sim"));
+
+    }
+    
+    
     static void mostrarTextos(){
 
         for(int index = 0; index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length; index++){
@@ -177,5 +226,5 @@ public class Principal {
             }
         }
     }
-
+    
 }
