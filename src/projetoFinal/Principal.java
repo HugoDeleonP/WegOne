@@ -98,7 +98,7 @@ public class Principal {
 
     // Método para cadastrar uma nova orientação
     private static void cadastrarOrientacao(Scanner input, String[] tipoTexto) {
-		String escolhaCadastro;
+		String repeticaoCadastro;
 		int escolhaTipoTexto;
 		
         int index = 10;
@@ -150,30 +150,30 @@ public class Principal {
     
             do{
                 System.out.println("Pretende cadastrar mais orientações?(Sim/Não)");
-                escolhaCadastro = input.nextLine();
+                repeticaoCadastro = input.nextLine();
     
-                if(escolhaCadastro.equalsIgnoreCase("Sim")){
+                if(repeticaoCadastro.equalsIgnoreCase("Sim")){
                     index++;
                 }
     
-                if(!escolhaCadastro.equalsIgnoreCase("Sim") && !escolhaCadastro.equalsIgnoreCase("Não")){
+                if(!repeticaoCadastro.equalsIgnoreCase("Sim") && !repeticaoCadastro.equalsIgnoreCase("Não")){
                     System.out.println("Resposta inválida");
                 }
                 
-            }while(!escolhaCadastro.equalsIgnoreCase("Sim") && !escolhaCadastro.equalsIgnoreCase("Não"));
-        }while(escolhaCadastro.equalsIgnoreCase("Sim"));
+            }while(!repeticaoCadastro.equalsIgnoreCase("Sim") && !repeticaoCadastro.equalsIgnoreCase("Não"));
+        }while(repeticaoCadastro.equalsIgnoreCase("Sim"));
 
     }
 
     static void mostrarTextos(){
 
-        for(int adress = 0; adress < tituloTexto.length && adress < conteudoTexto.length && adress < tipoTextoEscolhido.length; adress++){
+        for(int index = 0; index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length; index++){
             
-            if(tituloTexto[adress] != null && conteudoTexto[adress] != null && tipoTextoEscolhido[adress] != null){
-                System.out.println("ID " + (adress + 1) + " -");
-                System.out.println("Título: " + tituloTexto[adress]);
-                System.out.println("Conteúdo: " + conteudoTexto[adress]);
-                System.out.println("Tipo: " + tipoTextoEscolhido[adress]);
+            if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
+                System.out.println("ID " + (index + 1) + " -");
+                System.out.println("Título: " + tituloTexto[index]);
+                System.out.println("Conteúdo: " + conteudoTexto[index]);
+                System.out.println("Tipo: " + tipoTextoEscolhido[index]);
             }
         }
     }
