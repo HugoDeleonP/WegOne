@@ -8,3 +8,8 @@ Batizada de WegOne,permite que todos colaboradores da empresa possam ter acesso 
 * Permite a pesquisa das orientações dentro do sistema por ID
 * Permite a adição,edição e exclusão de arquivos escritos pelo colaborador
 * 10 orientações já configuradas dentro do sistema,para utilização e tendo como base na criação de mais orientações
+## 🛠️ Ferramentas utilizadas
+* [Visual Studio Code](https://code.visualstudio.com/)-> É um editor de código-fonte desenvolvido pela Microsoft para Windows, Linux e macOS.
+* [Eclipse](https://eclipseide.org/)-> É uma IDE livre para desenvolvimento Java criado em 2001 pela IBM, que tem suporte a várias outras linguagens a partir de plugins como: C/C++, PHP, ColdFusion, Python, Scala e, Kotlin.
+* [GitHub](https://github.com/)->É uma plataforma de hospedagem de código-fonte e arquivos com controle de versão usando o Git.
+
