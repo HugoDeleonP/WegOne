@@ -48,23 +48,20 @@ public class Principal {
                 case 1:
                     // Cadastrar Orientação
                 	
-                	System.out.println("Segue todos os textos registrados: ");
-                	mostrarTextos();
-                	
                     cadastrarOrientacao(input, tipoTexto);
-                    
-                    System.out.println("");
                     break;
                 case 2:
                     // Pesquisar Orientação
+                	
                     break;
                 case 3:
                     // Editar Orientação
+                	
                     break;
                 case 4:
                     // Excluir Orientação
-                	
-                	
+                	System.out.println("Segue todos os textos registrados: \n");
+                	mostrarTextos();
                 	
                 	excluirOrientacao(input);
                     break;
@@ -82,22 +79,6 @@ public class Principal {
 
         } while (escolhaNumero != 5);
 
-        String mostrarTexto;
-
-        do{
-            System.out.println("Gostaria de ter acesso a todos os textos? (Sim/Não)");
-            mostrarTexto = input.nextLine();
-
-            if(!mostrarTexto.equalsIgnoreCase("Sim") && !mostrarTexto.equalsIgnoreCase("Não")){
-                System.out.println("Resposta inválida");
-            }
-
-            if(mostrarTexto.equalsIgnoreCase("Sim")){
-            	mostrarTextos();
-            }
-
-            
-        }while (!mostrarTexto.equalsIgnoreCase("Sim") && !mostrarTexto.equalsIgnoreCase("Não"));
     }
 
     // Método para cadastrar uma nova orientação
@@ -226,6 +207,7 @@ public class Principal {
                 System.out.println("Título: " + tituloTexto[index]);
                 System.out.println("Conteúdo: " + conteudoTexto[index]);
                 System.out.println("Tipo: " + tipoTextoEscolhido[index]);
+                System.out.println("----------------------------------------------");
             }
             
             else {
