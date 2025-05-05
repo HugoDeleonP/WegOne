@@ -13,7 +13,7 @@ Batizada de WegOne,permite que todos colaboradores da empresa possam ter acesso 
 * [Eclipse](https://eclipseide.org/)-> É uma IDE livre para desenvolvimento Java criado em 2001 pela IBM, que tem suporte a várias outras linguagens a partir de plugins como: C/C++, PHP, ColdFusion, Python, Scala e, Kotlin.
 * [GitHub](https://github.com/)->É uma plataforma de hospedagem de código-fonte e arquivos com controle de versão usando o Git.
 ## 🤖 Versão utilizada do JAVA
-Dentro do sistema,a versão do Java JDK é muito importante para fluidez do projeto geral,ao todo,utilizamos a versão **Java JDK 22** ,já que é uma versão mais atual,moderna e estável do próprio Java
+Dentro do sistema,a versão do Java JDK é muito importante para fluidez do projeto geral,ao todo,utilizamos a versão **Java JDK 17** ,já que é uma versão mais estável,popular e padrão do próprio Java
 ## 🪖 Integrantes
 * Catarina Klein- *Product Owner* -[Catarina0830](https://github.com/Catarina0830)
 * Eduardo Dias da Maia- *Dev* -[EduardoDias1902](https://github.com/EduardoDias1902)
