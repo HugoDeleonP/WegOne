@@ -2,11 +2,16 @@ package projetoFinal;
 import java.util.Scanner;
 public class Principal {
 
+	static int ids[] = new int[100];
 	static String tituloTexto[] = new String[100];
 	static String conteudoTexto[] = new String[100];
 	static String tipoTextoEscolhido[] = new String[100];
 	static int index;
-
+	static int quantidadeTexto = 0;
+	static int proximoId = 1;
+	
+	
+	
 	public static void main(String [] args) {       
 
 		Scanner input = new Scanner(System.in);
@@ -30,28 +35,36 @@ public class Principal {
 		System.out.println("│      8         8        88888888888  `AY88888P              Y8888Y      88       88     Ybbd8          │");
 		System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────────────────┘");
 
-		System.out.println("	PT-BR----Antes de começar,adicione seu idioma!(1)(escolha o número representante dessa língua)");
-		System.out.println("	ES-------¡Antes de empezar, añade tu idioma!(2)(Elige el número que representa este idioma.)");
-		System.out.println("	EN-USA---Before you start, add your language!(3)(Choose the number that represents this language.)");
-		System.out.println("	DIE------Bevor Sie beginnen, fügen Sie Ihre Sprache hinzu!(4)(Wähle die Zahl, die diese Sprache repräsentiert.)");
-		int lingua=input.nextInt();
+		int lingua;
+		do {
+			
+			System.out.println("	PT-BR----Antes de começar,adicione seu idioma!(1)(escolha o número representante dessa língua)");
+			System.out.println("	ES-------¡Antes de empezar, añade tu idioma!(2)(Elige el número que representa este idioma.)");
+			System.out.println("	EN-USA---Before you start, add your language!(3)(Choose the number that represents this language.)");
+			System.out.println("	DIE------Bevor Sie beginnen, fügen Sie Ihre Sprache hinzu!(4)(Wähle die Zahl, die diese Sprache repräsentiert.)");
+			lingua=input.nextInt();
+			
+			switch(lingua){
 
-		switch(lingua){
+			case 1:
+				System.out.println("Língua escolhida com sucesso!");
+				break;
+			case 2:
+				System.out.println("¡Idioma seleccionado con éxito!");
+				break;
+			case 3:
+				System.out.println("Language selected successfully!");
+				break;
+			case 4:
+				System.out.println("Sprache erfolgreich ausgewählt!");
+				break;
 
-		case 1:
-			System.out.println("Língua escolhida com sucesso!");
-			break;
-		case 2:
-			System.out.println("¡Idioma seleccionado con éxito!");
-			break;
-		case 3:
-			System.out.println("Language selected successfully!");
-			break;
-		case 4:
-			System.out.println("Sprache erfolgreich ausgewählt!");
-			break;
+			default:
+				System.out.println("Idioma indisponível");
+				break;
+			}
+		}while(lingua > 4);
 
-		}
 
 
 		String tipoTexto[] = {"Manual de operação", "Procedimentos de segurança", "Manutenção e reparos", "Testes e diagnósticos", "Manual de conduta e Operações Setoriais"};
@@ -84,10 +97,7 @@ public class Principal {
 				break;
 			case 4:
 				// Excluir Orientação
-				System.out.println("Segue todos os textos registrados: \n");
-				mostrarTextos();
-
-				excluirOrientacao(input);
+				excluirOrientacao(input);					
 				break;
 
 			case 5:
@@ -110,8 +120,6 @@ public class Principal {
 		String repeticaoCadastro;
 		int escolhaTipoTexto;
 
-		index = 0;
-
 		String tituloDigitado;
 		String conteudoDigitado;
 
@@ -132,38 +140,35 @@ public class Principal {
 			}while(escolhaTipoTexto > 5 || escolhaTipoTexto < 1);
 
 			if(escolhaTipoTexto == 1){
-				tipoTextoEscolhido[index] = "Manual de operação";
+				tipoTextoEscolhido[quantidadeTexto] = "Manual de operação";
 			}
 			else if(escolhaTipoTexto == 2){
-				tipoTextoEscolhido[index] = "Procedimentos de segurança";
+				tipoTextoEscolhido[quantidadeTexto] = "Procedimentos de segurança";
 			}
 			else if (escolhaTipoTexto == 3) {
-				tipoTextoEscolhido[index] = "Manutenção e reparos";
+				tipoTextoEscolhido[quantidadeTexto] = "Manutenção e reparos";
 			}
 			else if (escolhaTipoTexto == 4){
-				tipoTextoEscolhido[index] = "Testes e diagnósticos";
+				tipoTextoEscolhido[quantidadeTexto] = "Testes e diagnósticos";
 			}
 			else if(escolhaTipoTexto == 5){
-				tipoTextoEscolhido[index] = "Manual de conduta e Operações Setoriais";
+				tipoTextoEscolhido[quantidadeTexto] = "Manual de conduta e Operações Setoriais";
 			}
 
 			System.out.println("Digite o título: ");
 			tituloDigitado = input.nextLine();
-
-			tituloTexto[index] = tituloDigitado;
+			tituloTexto[quantidadeTexto] = tituloDigitado;
 
 			System.out.println("Digite o conteúdo: ");
 			conteudoDigitado = input.nextLine();
-
-			conteudoTexto[index] = conteudoDigitado;
+			conteudoTexto[quantidadeTexto] = conteudoDigitado;
+			
+			ids[quantidadeTexto] = proximoId++;
+			quantidadeTexto++;
 
 			do{
 				System.out.println("Pretende cadastrar mais orientações?(Sim/Não)");
 				repeticaoCadastro = input.nextLine();
-
-				if(repeticaoCadastro.equalsIgnoreCase("Sim")){
-					index++;
-				}
 
 				if(!repeticaoCadastro.equalsIgnoreCase("Sim") && !repeticaoCadastro.equalsIgnoreCase("Não")){
 					System.out.println("Resposta inválida");
@@ -179,10 +184,17 @@ public class Principal {
 		String repeticaoExclusao;
 
 		do {
-			System.out.println("Digite o id da orientação que deseja excluir: ");
+			
+			if(!mostrarTextos()) {
+				System.out.println("Nenhum texto disponível para exclusão. Voltando ao menu.");
+	            return;
+
+			}
+			
+			System.out.println("Digite o espaço da orientação que deseja excluir se encontra: ");
 			int idDigitado = input.nextInt();
 			input.nextLine();
-
+			
 			index = idDigitado - 1;
 
 			if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null) {
@@ -192,9 +204,22 @@ public class Principal {
 				tipoTextoEscolhido[index] = null;
 
 				System.out.println("O texto foi excluído com sucesso!");
+				
+				for(int indiceDeslocamento = index; indiceDeslocamento < quantidadeTexto - 1; indiceDeslocamento++) {
+					tituloTexto[indiceDeslocamento] = tituloTexto[indiceDeslocamento + 1];
+					conteudoTexto[indiceDeslocamento] = conteudoTexto[indiceDeslocamento + 1];
+					tipoTextoEscolhido[indiceDeslocamento] = tipoTextoEscolhido[indiceDeslocamento + 1];
+					ids[indiceDeslocamento] = ids[indiceDeslocamento + 1];
+				}
+				tituloTexto[quantidadeTexto - 1] = null;
+				conteudoTexto[quantidadeTexto - 1] = null;
+				tipoTextoEscolhido[quantidadeTexto - 1] = null;
+				ids[quantidadeTexto - 1] = 0;
+				quantidadeTexto--;
+				
 			}
 
-			else if(tituloTexto[index] == null && conteudoTexto[index] == null && tipoTextoEscolhido[index] == null){
+			else {
 				System.out.println("O texto não existe.");
 			}
 
@@ -204,14 +229,10 @@ public class Principal {
 				System.out.println("Gostaria de excluir outro texto?(Sim/Não)");
 				repeticaoExclusao = input.nextLine();
 
-				if(repeticaoExclusao.equalsIgnoreCase("Não")) {
-					break;
-				}
-
 				if(!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não")) {
 					System.out.println("Resposta inválida");
 				}
-
+				
 			}while(!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não"));
 
 		}while(repeticaoExclusao.equalsIgnoreCase("Sim"));
@@ -219,30 +240,32 @@ public class Principal {
 	}
 
 
-	static void mostrarTextos(){
-
+	static boolean mostrarTextos(){
+		
+		boolean presencaTexto = false;
+		
 		index = 0;
-		int verificacaoListaVazia = 0;
-
+		
 		while(index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length){
 
 			if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
-				System.out.println("ID " + (index + 1) + " -");
+				System.out.println("Espaço: " + (index + 1) + "\n");
+				System.out.println("ID " + (ids[index]) + " -");
 				System.out.println("Título: " + tituloTexto[index]);
 				System.out.println("Conteúdo: " + conteudoTexto[index]);
 				System.out.println("Tipo: " + tipoTextoEscolhido[index]);
 				System.out.println("----------------------------------------------");
+				presencaTexto = true;
 			}
 
-			else {
-				verificacaoListaVazia++;
-			}
-
-			if(verificacaoListaVazia == 100) {
-				System.out.println("Não há texto registrado.");
-			}
 			index++;
 		}
+		
+		if(presencaTexto == false) {
+			System.out.println("Não há texto registrado.");
+		}
+		
+		return presencaTexto;
 	}
 
 }
