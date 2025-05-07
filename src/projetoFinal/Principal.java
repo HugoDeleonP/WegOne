@@ -10,17 +10,12 @@ public class Principal {
 	static String conteudoTexto[] = new String[100];
 	static String tipoTextoEscolhido[] = new String[100];
 	static int index;
-<<<<<<< HEAD
 	static int quantidadeTexto = 0;
 	static int proximoId = 1;
 	
 	
 	
 	public static void main(String [] args) {       
-=======
-
-	public static void main(String[] args) {
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
 
 		Scanner input = new Scanner(System.in);
 
@@ -43,7 +38,6 @@ public class Principal {
 		System.out.println("│      8         8        88888888888  `AY88888P              Y8888Y      88       88     Ybbd8          │");
 		System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────────────────┘");
 
-<<<<<<< HEAD
 		int lingua;
 		do {
 			
@@ -67,15 +61,6 @@ public class Principal {
 			case 4:
 				System.out.println("Sprache erfolgreich ausgewählt!");
 				break;
-=======
-		System.out.println("    PT-BR----Antes de começar,adicione seu idioma!(1)(escolha o número representante dessa língua)");
-		System.out.println("    ES-------¡Antes de empezar, añade tu idioma!(2)(Elige el número que representa este idioma.)");
-		System.out.println("    EN-USA---Before you start, add your language!(3)(Choose the number that represents this language.)");
-		System.out.println("    DIE------Bevor Sie beginnen, fügen Sie Ihre Sprache hinzu!(4)(Wähle die Zahl, die diese Sprache repräsentiert.)");
-		int lingua = input.nextInt();
-
-		switch (lingua) {
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
 
 			default:
 				System.out.println("Idioma indisponível");
@@ -84,10 +69,8 @@ public class Principal {
 		}while(lingua > 4);
 
 
-		String tipoTexto[] = { "Manual de operação", "Procedimentos de segurança", "Manutenção e reparos",
-				"Testes e diagnósticos", "Manual de conduta e Operações Setoriais" };
-		String opcoesMenu[] = { "Cadastrar Orientação", "Pesquisar Orientação", "Editar Orientação",
-				"Excluir Orientação", "Sair" };
+		String tipoTexto[] = { "Manual de operação", "Procedimentos de segurança", "Manutenção e reparos", "Testes e diagnósticos", "Manual de conduta e Operações Setoriais" };
+		String opcoesMenu[] = { "Cadastrar Orientação", "Pesquisar Orientação", "Editar Orientação", "Excluir Orientação", "Sair" };
 		int escolhaNumero;
 
 		do {
@@ -139,11 +122,6 @@ public class Principal {
 		String repeticaoCadastro;
 		int escolhaTipoTexto;
 
-<<<<<<< HEAD
-=======
-		//index = 0; OLHE AQUI
-
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
 		String tituloDigitado;
 		String conteudoDigitado;
 
@@ -163,7 +141,6 @@ public class Principal {
 				}
 			} while (escolhaTipoTexto > 5 || escolhaTipoTexto < 1);
 
-<<<<<<< HEAD
 			if(escolhaTipoTexto == 1){
 				tipoTextoEscolhido[quantidadeTexto] = "Manual de operação";
 			}
@@ -178,18 +155,6 @@ public class Principal {
 			}
 			else if(escolhaTipoTexto == 5){
 				tipoTextoEscolhido[quantidadeTexto] = "Manual de conduta e Operações Setoriais";
-=======
-			if (escolhaTipoTexto == 1) {
-				tipoTextoEscolhido[index] = "Manual de operação";
-			} else if (escolhaTipoTexto == 2) {
-				tipoTextoEscolhido[index] = "Procedimentos de segurança";
-			} else if (escolhaTipoTexto == 3) {
-				tipoTextoEscolhido[index] = "Manutenção e reparos";
-			} else if (escolhaTipoTexto == 4) {
-				tipoTextoEscolhido[index] = "Testes e diagnósticos";
-			} else if (escolhaTipoTexto == 5) {
-				tipoTextoEscolhido[index] = "Manual de conduta e Operações Setoriais";
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
 			}
 
 			System.out.println("Digite o título: ");
@@ -207,15 +172,7 @@ public class Principal {
 				System.out.println("Pretende cadastrar mais orientações?(Sim/Não)");
 				repeticaoCadastro = input.nextLine();
 
-<<<<<<< HEAD
 				if(!repeticaoCadastro.equalsIgnoreCase("Sim") && !repeticaoCadastro.equalsIgnoreCase("Não")){
-=======
-				if (repeticaoCadastro.equalsIgnoreCase("Sim")) {
-					index++;
-				}
-
-				if (!repeticaoCadastro.equalsIgnoreCase("Sim") && !repeticaoCadastro.equalsIgnoreCase("Não")) {
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
 					System.out.println("Resposta inválida");
 				}
 
@@ -301,26 +258,14 @@ public class Principal {
 			System.out.println("Digite o espaço da orientação que deseja excluir se encontra: ");
 			int idDigitado = input.nextInt();
 			input.nextLine();
-<<<<<<< HEAD
 			
 			index = idDigitado - 1;
-=======
 
-			int idExcluido = idDigitado - 1;
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
+			if (tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null) {
 
-			if (tituloTexto[ idExcluido] != null && conteudoTexto[ idExcluido] != null && tipoTextoEscolhido[ idExcluido] != null) {
-				
-	            for (int j =  idExcluido; j < index - 1; j++) {
-	                tituloTexto[j] = tituloTexto[j + 1];
-	                conteudoTexto[j] = conteudoTexto[j + 1];
-	                tipoTextoEscolhido[j] = tipoTextoEscolhido[j + 1];
-	            }
-				tituloTexto[index - 1] = null;
-				conteudoTexto[index - 1] = null;
-				tipoTextoEscolhido[index -1] = null;
-				
-				index--;
+				tituloTexto[index] = null;
+				conteudoTexto[index] = null;
+				tipoTextoEscolhido[index] = null;
 
 				System.out.println("O texto foi excluído com sucesso!");
 				
@@ -338,40 +283,23 @@ public class Principal {
 				
 			}
 
-<<<<<<< HEAD
 			else {
-=======
-			else if (tituloTexto[ idExcluido] == null && conteudoTexto[ idExcluido] == null && tipoTextoEscolhido[idExcluido] == null) {
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
 				System.out.println("O texto não existe.");
 			}
 			do {
 				System.out.println("Gostaria de excluir outro texto?(Sim/Não)");
 				repeticaoExclusao = input.nextLine();
 
-<<<<<<< HEAD
 				if(!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não")) {
 					System.out.println("Resposta inválida");
 				}
 				
 			}while(!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não"));
-=======
-				if (repeticaoExclusao.equalsIgnoreCase("Não")) {
-					break;
-				}
-
-				if (!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não")) {
-					System.out.println("Resposta inválida");
-				}
-
-			} while (!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não"));
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
 
 		} while (repeticaoExclusao.equalsIgnoreCase("Sim"));
 
 	}
 
-<<<<<<< HEAD
 
 	static boolean mostrarTextos(){
 		
@@ -384,17 +312,6 @@ public class Principal {
 			if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
 				System.out.println("Espaço: " + (index + 1) + "\n");
 				System.out.println("ID " + (ids[index]) + " -");
-=======
-	static void mostrarTextos() {
-
-		index = 0;
-		int verificacaoListaVazia = 0;
-
-		while (index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length) {
-
-			if (tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null) {
-				System.out.println("ID " + (index + 1) + " -");
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
 				System.out.println("Título: " + tituloTexto[index]);
 				System.out.println("Conteúdo: " + conteudoTexto[index]);
 				System.out.println("Tipo: " + tipoTextoEscolhido[index]);
@@ -402,16 +319,6 @@ public class Principal {
 				presencaTexto = true;
 			}
 
-<<<<<<< HEAD
-=======
-			else {
-				verificacaoListaVazia++;
-			}
-
-			if (verificacaoListaVazia == 100) {
-				System.out.println("Não há texto registrado.");
-			}
->>>>>>> e356249 (feat: Implementação da pesquisa de orientações)
 			index++;
 		}
 		
