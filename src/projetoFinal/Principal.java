@@ -215,21 +215,29 @@ public class Principal {
 				System.out.println("Digite o ID da orientação que deseja: ");
 				int id = input.nextInt();
 				input.nextLine();
-
-				int index = id - 1;
-				if (index >= 0 && index < tituloTexto.length && tituloTexto[index] != null) {
-					System.out.println("----------Orientação Encontrada---------------");
-					System.out.println("Título: " + tituloTexto[index]);
-					System.out.println("Conteúdo " + conteudoTexto[index]);
-					System.out.println("Tipo: " + tipoTextoEscolhido[index]);
-					System.out.println("----------------------------------------------");
-				} else {
-					System.out.println("Não existe nem uma orientação com esse ID");
+				encontrado = false;
+				for(int i = 0; i< quantidadeTexto; i++) {
+					if (ids[i] == id) {
+						System.out.println("----------Orientação Encontrada---------------");
+						System.out.println("Título: " + tituloTexto[i]);
+						System.out.println("Conteúdo " + conteudoTexto[i]);
+						System.out.println("Tipo: " + tipoTextoEscolhido[i]);
+						System.out.println("----------------------------------------------");
+						encontrado = true;
+						break;
+					}
 				}
+				
+				if (!encontrado){
+						System.out.println("Não existe nem uma orientação com esse ID");
+						break;
+				}
+				
 				break;
-
+				
 			default:
 				System.out.println("Opção inválida");
+				break;
 			}
 			do {
 				System.out.println("Deseja Pesquisar Mais Alguma Orientação?Sim/Não");
