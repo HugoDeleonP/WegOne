@@ -54,6 +54,7 @@ public class Principal {
 				break;
 			case 2:
 				System.out.println("¡Idioma seleccionado con éxito!");
+				idioma="es";
 				break;
 			case 3:
 				System.out.println("Language selected successfully!");
@@ -93,19 +94,19 @@ public class Principal {
 				break;
 			case 2:
 				// Pesquisar Orientação
-				pesquisarOrientacao(input, tituloTexto);
+				pesquisarOrientacao(input, tituloTexto, traducao);
 
 				break;
 			case 3:
 				// Editar Orientação
-
+				System.out.println("Funcionalidade em manutenção!");
 				break;
 			case 4:
 				// Excluir Orientação
 				System.out.println(traducao.getProperty("listagemTextos"));
-				mostrarTextos();
+				
 
-				excluirOrientacao(input);
+				excluirOrientacao(input,traducao);
 				break;
 			case 5:
 			do{
@@ -123,7 +124,7 @@ public class Principal {
 					else if (selecao==2){
 						System.out.println(traducao.getProperty("mo2Conteudo"));
 					}else {
-						System.out.println("Numero inválido");
+						System.out.println(traducao.getProperty("numeroInvalido"));
 						break;
 					}
             }
@@ -139,7 +140,7 @@ public class Principal {
 					else if (selecao==2){
 						System.out.println(traducao.getProperty("ps2Conteudo"));
 					}else {
-						System.out.println("Numero inválido");
+						System.out.println(traducao.getProperty("numeroInvalido"));
 						break;
 					}
 			}
@@ -155,7 +156,7 @@ public class Principal {
 					else if (selecao==2){
 						System.out.println(traducao.getProperty("mr2Conteudo"));
 					}else {
-						System.out.println("Numero inválido");
+						System.out.println(traducao.getProperty("numeroInvalido"));
 						break;
 					}
 			}
@@ -171,7 +172,7 @@ public class Principal {
 					else if (selecao==2){
 						System.out.println(traducao.getProperty("td2Conteudo"));
 					}else {
-						System.out.println("Numero inválido");
+						System.out.println(traducao.getProperty("numeroInvalido"));
 						break;
 					}
 			}
@@ -187,7 +188,7 @@ public class Principal {
 					else if (selecao==2){
 						System.out.println(traducao.getProperty("mcos2Conteudo"));
 					}else {
-						System.out.println("Numero inválido");
+						System.out.println(traducao.getProperty("numeroInvalido"));
 						break;
 					}
 			}
@@ -275,10 +276,10 @@ public class Principal {
 
 	}
 
-	private static void pesquisarOrientacao(Scanner input, String tituloTexto[]) {
+	private static void pesquisarOrientacao(Scanner input, String tituloTexto[],Tradutor traducao) {
 		String repeticaoPesquisa;
 		do {
-			System.out.println("Você deseja pesquisar por 1-Titulo ou 2-ID?");
+			System.out.println(traducao.getProperty("perguntaPesquisaTipo"));
 			int opcao = input.nextInt();
 			input.nextLine();
 
@@ -286,36 +287,38 @@ public class Principal {
 
 			switch (opcao) {
 			case 1:
-				System.out.println("Digite o título exato da orientação que deseja pesquisar:");
+				System.out.println(traducao.getProperty("qualOrientacao"));
 				String titulo = input.nextLine();
 				for (int i = 0; i < tituloTexto.length; i++) {
 					if (tituloTexto[i] != null && tituloTexto[i].equalsIgnoreCase(titulo)) {
-						System.out.println("----------Orientação Encontrada---------------");
-						System.out.println("Título: " + tituloTexto[i]);
-						System.out.println("Conteúdo " + conteudoTexto[i]);
-						System.out.println("Tipo: " + tipoTextoEscolhido[i]);
+						System.out.println(traducao.getProperty("orientacaoEncontrada"));
+						System.out.println("ID " + ids[i]);
+						System.out.println(traducao.getProperty("titulo") + tituloTexto[i]);
+						System.out.println(traducao.getProperty("conteudo") + conteudoTexto[i]);
+						System.out.println(traducao.getProperty("tipo")+ tipoTextoEscolhido[i]);
 						System.out.println("----------------------------------------------");
 						encontrado = true;
 					}
 				}
 
 				if (!encontrado) {
-					System.out.println("Nenhuma orientação encontrada com esse título.");
+					System.out.println(traducao.getProperty("semOrientacao"));
 				}
 
 				break;
 
 			case 2:
-				System.out.println("Digite o ID da orientação que deseja: ");
+				System.out.println(traducao.getProperty("digitarID"));
 				int id = input.nextInt();
 				input.nextLine();
 				encontrado = false;
 				for(int i = 0; i< quantidadeTexto; i++) {
 					if (ids[i] == id) {
-						System.out.println("----------Orientação Encontrada---------------");
-						System.out.println("Título: " + tituloTexto[i]);
-						System.out.println("Conteúdo " + conteudoTexto[i]);
-						System.out.println("Tipo: " + tipoTextoEscolhido[i]);
+						System.out.println(traducao.getProperty("orientacaoEncontrada"));
+						System.out.println("ID " + ids[i]);
+						System.out.println(traducao.getProperty("titulo") + tituloTexto[i]);
+						System.out.println(traducao.getProperty("conteudo") + conteudoTexto[i]);
+						System.out.println(traducao.getProperty("tipo")+ tipoTextoEscolhido[i]);
 						System.out.println("----------------------------------------------");
 						encontrado = true;
 						break;
@@ -323,41 +326,41 @@ public class Principal {
 				}
 				
 				if (!encontrado){
-						System.out.println("Não existe nem uma orientação com esse ID");
+						System.out.println(traducao.getProperty("semID"));
 						break;
 				}
 				
 				break;
 				
 			default:
-				System.out.println("Opção inválida");
+				System.out.println(traducao.getProperty("respostaInvalida"));
 				break;
 			}
 			do {
-				System.out.println("Deseja Pesquisar Mais Alguma Orientação?Sim/Não");
+				System.out.println(traducao.getProperty("perguntaPesquisa"));
 				repeticaoPesquisa = input.nextLine();
 
-				if (!repeticaoPesquisa.equalsIgnoreCase("Sim") && !repeticaoPesquisa.equalsIgnoreCase("Não")) {
-					System.out.println("Resposta Inválida");
+				if (!repeticaoPesquisa.equalsIgnoreCase("positivo") && !repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("negativo"))) {
+					System.out.println(traducao.getProperty("invalida"));
 				}
-			} while (!repeticaoPesquisa.equalsIgnoreCase("Sim") && !repeticaoPesquisa.equalsIgnoreCase("Não"));
-		} while (repeticaoPesquisa.equalsIgnoreCase("Sim"));
+			} while (!repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("positivo")) && !repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("negativo")));
+		} while (repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("positivo")));
 
 	}
 
-	private static void excluirOrientacao(Scanner input) {
+	private static void excluirOrientacao(Scanner input,Tradutor traducao) {
 
 		String repeticaoExclusao;
 
 		do {
 			
-			if(!mostrarTextos()) {
-				System.out.println("Nenhum texto disponível para exclusão. Voltando ao menu.");
+			if(!mostrarTextos(traducao)) {
+				System.out.println(traducao.getProperty("semTextoExclusao"));
 	            return;
 
 			}
 			
-			System.out.println("Digite o espaço da orientação que deseja excluir se encontra: ");
+			System.out.println(traducao.getProperty("digitarTextoExclusao"));
 			int idDigitado = input.nextInt();
 			input.nextLine();
 			
@@ -369,7 +372,7 @@ public class Principal {
 				conteudoTexto[index] = null;
 				tipoTextoEscolhido[index] = null;
 
-				System.out.println("O texto foi excluído com sucesso!");
+				System.out.println(traducao.getProperty("sucessoExcluir"));
 				
 				for(int indiceDeslocamento = index; indiceDeslocamento < quantidadeTexto - 1; indiceDeslocamento++) {
 					tituloTexto[indiceDeslocamento] = tituloTexto[indiceDeslocamento + 1];
@@ -386,24 +389,24 @@ public class Principal {
 			}
 
 			else {
-				System.out.println("O texto não existe.");
+				System.out.println(traducao.getProperty("textoNãoExiste"));
 			}
 			do {
-				System.out.println("Gostaria de excluir outro texto?(Sim/Não)");
+				System.out.println(traducao.getProperty("querExcluir"));
 				repeticaoExclusao = input.nextLine();
 
-				if(!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não")) {
-					System.out.println("Resposta inválida");
+				if(!repeticaoExclusao.equalsIgnoreCase(traducao.getProperty("positivo")) && !repeticaoExclusao.equalsIgnoreCase(traducao.getProperty("negativo"))) {
+					System.out.println(traducao.getProperty("respostaInvalida"));
 				}
 				
-			}while(!repeticaoExclusao.equalsIgnoreCase("Sim") && !repeticaoExclusao.equalsIgnoreCase("Não"));
+			}while(!repeticaoExclusao.equalsIgnoreCase(traducao.getProperty("positivo")) && !repeticaoExclusao.equalsIgnoreCase(traducao.getProperty("negativo")));
 
-		} while (repeticaoExclusao.equalsIgnoreCase("Sim"));
+		} while (repeticaoExclusao.equalsIgnoreCase(traducao.getProperty("positivo")));
 
 	}
 
 
-	static boolean mostrarTextos(){
+	static boolean mostrarTextos(Tradutor traducao){
 		
 		boolean presencaTexto = false;
 		
@@ -412,11 +415,11 @@ public class Principal {
 		while(index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length){
 
 			if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
-				System.out.println("Espaço: " + (index + 1) + "\n");
-				System.out.println("ID " + (ids[index]) + " -");
-				System.out.println("Título: " + tituloTexto[index]);
-				System.out.println("Conteúdo: " + conteudoTexto[index]);
-				System.out.println("Tipo: " + tipoTextoEscolhido[index]);
+				System.out.println(traducao.getProperty("espaco") + (index + 1) + "\n");
+				System.out.println(traducao.getProperty("ID") + (ids[index]) + " -");
+				System.out.println(traducao.getProperty("tipo") + tituloTexto[index]);
+				System.out.println(traducao.getProperty("conteudo") + conteudoTexto[index]);
+				System.out.println(traducao.getProperty("tipo") + tipoTextoEscolhido[index]);
 				System.out.println("----------------------------------------------");
 				presencaTexto = true;
 			}
@@ -425,7 +428,7 @@ public class Principal {
 		}
 		
 		if(presencaTexto == false) {
-			System.out.println("Não há texto registrado.");
+			System.out.println(traducao.getProperty("semRegistro"));
 		}
 		
 		return presencaTexto;
