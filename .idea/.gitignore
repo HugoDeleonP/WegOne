@@ -1,3 +1,36 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# User-specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# IntelliJ IDEA
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+nbproject/
+
+# JDK files
+*.jre/
+
+# Temporary files
+*.swp
