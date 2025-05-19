@@ -14,7 +14,7 @@ Batizada de WegOne,permite que todos colaboradores da empresa possam ter acesso 
 * [GitHub](https://github.com/)->É uma plataforma de hospedagem de código-fonte e arquivos com controle de versão usando o Git.
 ## 🤖 Versão utilizada do JAVA
 Dentro do sistema,a versão do Java JDK é muito importante para fluidez do projeto geral,ao todo,utilizamos a versão **Java JDK 17** ,já que é uma versão mais estável,popular e padrão do próprio Java
-##📋 Requisitos mínimos para utilizar o manual
+## 📋 Requisitos mínimos para utilizar o manual
 * Tenha o seu Visual Studio Code sempre na última versão para mais estabilidade e a extensão "Extencion Pack for Java" já que o código foi escritoem  linguagem Java.
 * Na IDE Eclipse também será a última versão atualiza para não ter erros, instale o kit desenvolvimento java (JDK) que é um conjunto de ferramentas que irá traduzirá o seu código para que sua máquina entenda.
 * No Eclipse será necessário utilizar no mínimo a versão Java 17.
