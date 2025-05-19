@@ -340,7 +340,7 @@ public class Principal {
 				System.out.println(traducao.getProperty("perguntaPesquisa"));
 				repeticaoPesquisa = input.nextLine();
 
-				if (!repeticaoPesquisa.equalsIgnoreCase("positivo") && !repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("negativo"))) {
+				if (!repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("positivo")) && !repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("negativo"))) {
 					System.out.println(traducao.getProperty("invalida"));
 				}
 			} while (!repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("positivo")) && !repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("negativo")));
@@ -416,7 +416,7 @@ public class Principal {
 
 			if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
 				System.out.println(traducao.getProperty("espaco") + (index + 1) + "\n");
-				System.out.println(traducao.getProperty("ID") + (ids[index]) + " -");
+				System.out.println("ID " + (ids[index]) + " -");
 				System.out.println(traducao.getProperty("tipo") + tituloTexto[index]);
 				System.out.println(traducao.getProperty("conteudo") + conteudoTexto[index]);
 				System.out.println(traducao.getProperty("tipo") + tipoTextoEscolhido[index]);
