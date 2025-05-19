@@ -9,7 +9,7 @@ public class Principal {
 	static String tituloTexto[] = new String[100];
 	static String conteudoTexto[] = new String[100];
 	static String tipoTextoEscolhido[] = new String[100];
-	static int index;
+	static int index = 0;
 	static int quantidadeTexto = 0;
 	static int proximoId = 1;
 	
@@ -18,11 +18,14 @@ public class Principal {
 	public static void main(String [] args) {       
 
 		Scanner input = new Scanner(System.in);
-		/*Texto[] textos = new Texto [100];
+		
 
         // Método construtor
-        Texto texto1 = new Texto("Português", "Manual de operação", "titulo1", "conteudo1" );
-        textos[0] = texto1;*/
+        /*Texto[] textos = new Texto [100];
+        
+        Texto textoPredefinido = new Texto(traducao.getProperty("tipoManualOperacao"), traducao.getProperty("mo1Titulo"), traducao.getProperty("mo1Conteudo"));
+        textos[0] = textoPredefinido;
+        */
 
 		System.out.println("┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐");
 		System.out.println("│I8,        8        ,8I  88888888888  ,ad8888ba,           ,ad8888ba,                                   │");
@@ -74,12 +77,80 @@ public class Principal {
 		Tradutor traducao = Tradutor.getInstance(idioma);
 
 		String tipoTexto[] = { "Manual de operação", "Procedimentos de segurança", "Manutenção e reparos", "Testes e diagnósticos", "Manual de conduta e Operações Setoriais" };
-		String opcoesMenu[] = { "Cadastrar Orientação", "Pesquisar Orientação", "Editar Orientação", "Excluir Orientação", "Sair" };
+		
+		tituloTexto[0] = traducao.getProperty("mo1Titulo");
+		conteudoTexto[0] = traducao.getProperty("mo1Conteudo");
+		tipoTextoEscolhido[0] = traducao.getProperty("tipoManualOperacao");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+		
+		tituloTexto[1] = traducao.getProperty("mo2Titulo");
+		conteudoTexto[1] = traducao.getProperty("mo2Conteudo");
+		tipoTextoEscolhido[1] = traducao.getProperty("tipoManualOperacao");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+
+		
+		tituloTexto[2] = traducao.getProperty("ps1Titulo");
+		conteudoTexto[2] = traducao.getProperty("ps1Conteudo");
+		tipoTextoEscolhido[2] = traducao.getProperty("tipoProcedimentoSeguranca");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+
+		tituloTexto[3] = traducao.getProperty("ps2Titulo");
+		conteudoTexto[3] = traducao.getProperty("ps2Conteudo");
+		tipoTextoEscolhido[3] = traducao.getProperty("tipoProcedimentoSeguranca");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+
+		tituloTexto[4] = traducao.getProperty("mr1Titulo");
+		conteudoTexto[4] = traducao.getProperty("mr1Conteudo");
+		tipoTextoEscolhido[4] = traducao.getProperty("tipoManutencaoReparo");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+
+		tituloTexto[5] = traducao.getProperty("mr2Titulo");
+		conteudoTexto[5] = traducao.getProperty("mr2Conteudo");
+		tipoTextoEscolhido[5] = traducao.getProperty("tipoManutencaoReparo");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+
+		tituloTexto[6] = traducao.getProperty("td1Titulo");
+		conteudoTexto[6] = traducao.getProperty("td1Conteudo");
+		tipoTextoEscolhido[6] = traducao.getProperty("tipoTesteDiagnostico");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+
+		tituloTexto[7] = traducao.getProperty("td2Titulo");
+		conteudoTexto[7] = traducao.getProperty("td2Conteudo");
+		tipoTextoEscolhido[7] = traducao.getProperty("tipoTesteDiagnostico");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+
+		tituloTexto[8] = traducao.getProperty("mcos1Titulo");
+		conteudoTexto[8] = traducao.getProperty("mcos1Conteudo");
+		tipoTextoEscolhido[8] = traducao.getProperty("tipoCondutaOperacoesSetoriais");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+
+		tituloTexto[9] = traducao.getProperty("mcos2Titulo");
+		conteudoTexto[9] = traducao.getProperty("mcos2Conteudo");
+		tipoTextoEscolhido[9] = traducao.getProperty("tipoCondutaOperacoesSetoriais");
+		ids[quantidadeTexto] = proximoId++;
+		quantidadeTexto++;
+		index++;
+
 		int escolhaNumero;
-		int selecao = 0;
 		do {
-			
-				
 			// Exibe o menu principal
 			System.out.println(traducao.getProperty("menu"));
 
@@ -104,110 +175,21 @@ public class Principal {
 			case 4:
 				// Excluir Orientação
 				System.out.println(traducao.getProperty("listagemTextos"));
-				
-
 				excluirOrientacao(input,traducao);
 				break;
-			case 5:
-			do{
-            System.out.println(traducao.getProperty("tipoOrientacao"));
-        	selecao = input.nextInt();
-            if (selecao==1){
-				System.out.print("1-");
-                     System.out.println(traducao.getProperty("mo1Titulo"));
-					 System.out.print("2-");
-                    System.out.println(traducao.getProperty("mo2Titulo"));
-                    selecao = input.nextInt();
-                    if (selecao==1){
-                        System.out.println(traducao.getProperty("mo1Conteudo"));
-                    }
-					else if (selecao==2){
-						System.out.println(traducao.getProperty("mo2Conteudo"));
-					}else {
-						System.out.println(traducao.getProperty("numeroInvalido"));
-						break;
-					}
-            }
-			else if(selecao==2){
-				System.out.print("1-");
-					System.out.println(traducao.getProperty("ps1Titulo"));
-					System.out.print("2-");
-                    System.out.println(traducao.getProperty("ps2Titulo"));
-                    selecao = input.nextInt();
-                    if (selecao==1){
-                       System.out.println(traducao.getProperty("ps1Conteudo"));
-                    }
-					else if (selecao==2){
-						System.out.println(traducao.getProperty("ps2Conteudo"));
-					}else {
-						System.out.println(traducao.getProperty("numeroInvalido"));
-						break;
-					}
-			}
-			else if(selecao==3){
-				System.out.print("1-");
-					System.out.println(traducao.getProperty("mr1Titulo"));
-					System.out.print("2-");
-                    System.out.println(traducao.getProperty("mr2Titulo"));
-                    selecao = input.nextInt();
-                    if (selecao==1){
-                        System.out.println(traducao.getProperty("mr1Conteudo"));
-                    }
-					else if (selecao==2){
-						System.out.println(traducao.getProperty("mr2Conteudo"));
-					}else {
-						System.out.println(traducao.getProperty("numeroInvalido"));
-						break;
-					}
-			}
-			else if(selecao==4){
-				System.out.print("1-");
-					System.out.println(traducao.getProperty("td1Titulo"));
-					System.out.print("2-");
-                    System.out.println(traducao.getProperty("td2Titulo"));
-                    selecao = input.nextInt();
-                    if (selecao==1){
-                       System.out.println(traducao.getProperty("td1Conteudo"));
-                    }
-					else if (selecao==2){
-						System.out.println(traducao.getProperty("td2Conteudo"));
-					}else {
-						System.out.println(traducao.getProperty("numeroInvalido"));
-						break;
-					}
-			}
-			else if(selecao==5){
-					System.out.print("1-");
-					System.out.println(traducao.getProperty("mcos1Titulo"));
-					System.out.print("2-");
-                    System.out.println(traducao.getProperty("mcos2Titulo"));
-                    selecao = input.nextInt();
-                    if (selecao==1){
-                        System.out.println(traducao.getProperty("mcos1Conteudo"));
-                    }
-					else if (selecao==2){
-						System.out.println(traducao.getProperty("mcos2Conteudo"));
-					}else {
-						System.out.println(traducao.getProperty("numeroInvalido"));
-						break;
-					}
-			}
-			break; 
-			}while( selecao != 5);
-			break;
-				case 6:
+			case 6:
 
-					System.out.println(traducao.getProperty("encerramento"));
-					break;
+				System.out.println(traducao.getProperty("encerramento"));
+				break;
 
-				default:
+			default:
 
-					System.out.println(traducao.getProperty("numeroInvalido"));
-					break;
+				System.out.println(traducao.getProperty("numeroInvalido"));
+				break;
 				}
 
 		
-	}while(escolhaNumero != 6);
+		}while(escolhaNumero != 6);
 	}
 
 	// Método para cadastrar uma nova orientação
@@ -217,6 +199,7 @@ public class Principal {
 
 		String tituloDigitado;
 		String conteudoDigitado;
+		index = 10;
 
 		do{
 			do{
@@ -248,8 +231,6 @@ public class Principal {
 
 			System.out.println(traducao.getProperty("comandoDigitoTitulo"));
 			tituloDigitado = input.nextLine();
-			tituloTexto[quantidadeTexto] = tituloDigitado;
-
 			tituloTexto[quantidadeTexto] = tituloDigitado;
 
 			System.out.println(traducao.getProperty("comandoDigitoConteudo"));
@@ -357,7 +338,6 @@ public class Principal {
 			if(!mostrarTextos(traducao)) {
 				System.out.println(traducao.getProperty("semTextoExclusao"));
 	            return;
-
 			}
 			
 			System.out.println(traducao.getProperty("digitarTextoExclusao"));
@@ -365,7 +345,7 @@ public class Principal {
 			input.nextLine();
 			
 			index = idDigitado - 1;
-
+			
 			if (tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null) {
 
 				tituloTexto[index] = null;
@@ -415,11 +395,11 @@ public class Principal {
 		while(index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length){
 
 			if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
-				System.out.println(traducao.getProperty("espaco") + (index + 1) + "\n");
+				System.out.println(traducao.getProperty("espaco") + " "  + (index + 1) + "\n");
 				System.out.println("ID " + (ids[index]) + " -");
-				System.out.println(traducao.getProperty("tipo") + tituloTexto[index]);
-				System.out.println(traducao.getProperty("conteudo") + conteudoTexto[index]);
-				System.out.println(traducao.getProperty("tipo") + tipoTextoEscolhido[index]);
+				System.out.println(traducao.getProperty("titulo") + " " + tituloTexto[index] + "\n");
+				System.out.println(traducao.getProperty("conteudo") + " "+ conteudoTexto[index] + "\n");
+				System.out.println(traducao.getProperty("tipo") + " " + tipoTextoEscolhido[index] + "\n");
 				System.out.println("----------------------------------------------");
 				presencaTexto = true;
 			}
