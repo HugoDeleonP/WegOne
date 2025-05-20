@@ -15,9 +15,9 @@ Batizada de WegOne,permite que todos colaboradores da empresa possam ter acesso 
 ## 🤖 Versão utilizada do JAVA
 Dentro do sistema,a versão do Java JDK é muito importante para fluidez do projeto geral,ao todo,utilizamos a versão **Java JDK 17** ,já que é uma versão mais estável,popular e padrão do próprio Java
 ## 📋 Requisitos mínimos para utilizar o manual
-* Tenha o seu **Visual Studio Code** sempre na última versão para mais estabilidade e a extensão **"Extension Pack for Java"** já que o código foi escrito em linguagem Java.
-* Na IDE Eclipse também será a última versão atualiza para não ter erros, instale o **kit desenvolvimento java (JDK)** que é um conjunto de ferramentas que irá traduzirá o seu código para que sua máquina entenda.
-* No Eclipse será necessário utilizar no mínimo a versão **Java 17.**
+* Recomenda-se que o Visual Studio Code esteja de acordo com a versão mais recente, a fim de garantir mais estabilidade e compatibilidade do código, e a extensão **"Extension Pack for Java"**.
+* Recomenda-se que a IDE Eclipse também esteja na última versão, devido aos mesmos motivos citados acerca do Visual Studio Code.
+* Recomenda-se que a versão do Java Development Kit seja, no mínimo, o JDK 17. A fim de possibilitar a funcionalidade do código dentro do terminal.
 ## 🪖 Integrantes
 * Catarina Klein- *Product Owner* -[Catarina0830](https://github.com/Catarina0830)
 * Eduardo Dias da Maia- *Dev* -[EduardoDias1902](https://github.com/EduardoDias1902)
