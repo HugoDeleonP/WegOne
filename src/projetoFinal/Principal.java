@@ -177,10 +177,10 @@ public class Principal {
 				System.out.println(traducao.getProperty("listagemTextos"));
 				excluirOrientacao(input,traducao);
 				break;
-			case 6:
+			case 5:
 
 				System.out.println(traducao.getProperty("encerramento"));
-				break;
+				return;
 
 			default:
 
