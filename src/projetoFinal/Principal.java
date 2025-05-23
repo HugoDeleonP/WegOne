@@ -160,11 +160,11 @@ public class Principal {
 			case 1:
 				// Cadastrar Orientação
 
-				managerOrientacao.cadastrarOrientacao(input, tipoTexto, traducao);
+				managerOrientacao.cadastrarOrientacao(input, tituloTexto, conteudoTexto, tipoTexto, traducao, tipoTextoEscolhido, index, quantidadeTexto, ids, proximoId);
 				break;
 			case 2:
 				// Pesquisar Orientação
-				managerOrientacao.pesquisarOrientacao(input, tituloTexto, traducao);
+				managerOrientacao.pesquisarOrientacao(input, tituloTexto, conteudoTexto, tipoTexto, traducao, tipoTextoEscolhido, index, quantidadeTexto, ids, proximoId);
 
 				break;
 			case 3:
@@ -174,7 +174,7 @@ public class Principal {
 			case 4:
 				// Excluir Orientação
 				System.out.println(traducao.getProperty("listagemTextos"));
-				managerOrientacao.excluirOrientacao(input,traducao);
+				managerOrientacao.excluirOrientacao(input, tituloTexto, conteudoTexto, tipoTexto, traducao, tipoTextoEscolhido, index, quantidadeTexto, ids, proximoId);
 				break;
 			case 5:
 
@@ -189,33 +189,5 @@ public class Principal {
 
 		
 		}while(escolhaNumero != 6);
-	}
-
-	public boolean mostrarTextos(Tradutor traducao){
-	
-	boolean presencaTexto = false;
-	
-	index = 0;
-	
-	while(index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length){
-
-		if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
-			System.out.println(traducao.getProperty("espaco") + " "  + (index + 1) + "\n");
-			System.out.println("ID " + (ids[index]) + " -");
-			System.out.println(traducao.getProperty("titulo") + " " + tituloTexto[index] + "\n");
-			System.out.println(traducao.getProperty("conteudo") + " "+ conteudoTexto[index] + "\n");
-			System.out.println(traducao.getProperty("tipo") + " " + tipoTextoEscolhido[index] + "\n");
-			System.out.println("----------------------------------------------");
-			presencaTexto = true;
-		}
-
-		index++;
-	}
-	
-	if(presencaTexto == false) {
-		System.out.println(traducao.getProperty("semRegistro"));
-	}
-	
-	return presencaTexto;
 	}
 }

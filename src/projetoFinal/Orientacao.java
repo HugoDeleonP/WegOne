@@ -1,16 +1,12 @@
 package projetoFinal;
 
+import java.util.Scanner;
+
 public class Orientacao{
 
 	String tipo;
 	String titulo;
 	String conteudo;
-	
-	public Orientacao(String tipo, String titulo, String conteudo) {
-		this.tipo = tipo;
-		this.titulo = titulo;
-		this.conteudo = conteudo;
-	}
 	
 	public String getTipo() {
 		return tipo;
@@ -37,7 +33,7 @@ public class Orientacao{
 	}
 	
 	// Método para cadastrar uma nova orientação
-	public void cadastrarOrientacao(Scanner input, String[] tipoTexto, Tradutor traducao) {
+	public void cadastrarOrientacao(Scanner input, String[] tituloTexto, String[] conteudoTexto, String[] tipoTexto, Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
 		String repeticaoCadastro;
 		int escolhaTipoTexto;
 
@@ -101,7 +97,7 @@ public class Orientacao{
 
 	}
 
-	public void pesquisarOrientacao(Scanner input, String tituloTexto[],Tradutor traducao) {
+	public void pesquisarOrientacao(Scanner input, String[] tituloTexto, String[] conteudoTexto, String[] tipoTexto, Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
 		String repeticaoPesquisa;
 		do {
 			System.out.println(traducao.getProperty("perguntaPesquisaTipo"));
@@ -173,13 +169,13 @@ public class Orientacao{
 
 	}
 
-	public void excluirOrientacao(Scanner input,Tradutor traducao) {
+	public void excluirOrientacao(Scanner input, String[] tituloTexto, String[] conteudoTexto, String[] tipoTexto, Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
 
 		String repeticaoExclusao;
 
 		do {
 			
-			if(!mostrarTextos(traducao)) {
+			if(!mostrarTextos(traducao, tituloTexto, conteudoTexto, tipoTextoEscolhido, index, quantidadeTexto, ids)) {
 				System.out.println(traducao.getProperty("semTextoExclusao"));
 	            return;
 			}
@@ -227,6 +223,34 @@ public class Orientacao{
 
 		} while (repeticaoExclusao.equalsIgnoreCase(traducao.getProperty("positivo")));
 
+	}
+
+	public boolean mostrarTextos( Tradutor traducao, String[] tituloTexto, String[] conteudoTexto, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids){
+	
+	boolean presencaTexto = false;
+	
+	index = 0;
+	
+	while(index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length){
+
+		if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
+			System.out.println(traducao.getProperty("espaco") + " "  + (index + 1) + "\n");
+			System.out.println("ID " + (ids[index]) + " -");
+			System.out.println(traducao.getProperty("titulo") + " " + tituloTexto[index] + "\n");
+			System.out.println(traducao.getProperty("conteudo") + " "+ conteudoTexto[index] + "\n");
+			System.out.println(traducao.getProperty("tipo") + " " + tipoTextoEscolhido[index] + "\n");
+			System.out.println("----------------------------------------------");
+			presencaTexto = true;
+		}
+
+		index++;
+	}
+	
+	if(presencaTexto == false) {
+		System.out.println(traducao.getProperty("semRegistro"));
+	}
+	
+	return presencaTexto;
 	}
 
 }
