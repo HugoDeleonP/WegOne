@@ -105,25 +105,19 @@ public class Orientacao{
 			input.nextLine();
 
 			boolean encontrado = false;
-
 			switch (opcao) {
 			case 1:
 				System.out.println(traducao.getProperty("qualOrientacao"));
 				String titulo = input.nextLine();
-				for (int i = 0; i < tituloTexto.length; i++) {
-					if (tituloTexto[i] != null && tituloTexto[i].equalsIgnoreCase(titulo)) {
-						System.out.println(traducao.getProperty("orientacaoEncontrada"));
-						System.out.println("ID " + ids[i]);
-						System.out.println(traducao.getProperty("titulo") + tituloTexto[i]);
-						System.out.println(traducao.getProperty("conteudo") + conteudoTexto[i]);
-						System.out.println(traducao.getProperty("tipo")+ tipoTextoEscolhido[i]);
-						System.out.println("----------------------------------------------");
-						encontrado = true;
+				for (index = 0; index < tituloTexto.length; index++) {
+					if (tituloTexto[index] != null && tituloTexto[index].equalsIgnoreCase(titulo)) {
+						exibirOrientacaoPesquisada(traducao, ids, tituloTexto, conteudoTexto, tipoTextoEscolhido, encontrado, index);
 					}
 				}
 
 				if (!encontrado) {
 					System.out.println(traducao.getProperty("semOrientacao"));
+					break;
 				}
 
 				break;
@@ -133,16 +127,9 @@ public class Orientacao{
 				int id = input.nextInt();
 				input.nextLine();
 				encontrado = false;
-				for(int i = 0; i< quantidadeTexto; i++) {
-					if (ids[i] == id) {
-						System.out.println(traducao.getProperty("orientacaoEncontrada"));
-						System.out.println("ID " + ids[i]);
-						System.out.println(traducao.getProperty("titulo") + tituloTexto[i]);
-						System.out.println(traducao.getProperty("conteudo") + conteudoTexto[i]);
-						System.out.println(traducao.getProperty("tipo")+ tipoTextoEscolhido[i]);
-						System.out.println("----------------------------------------------");
-						encontrado = true;
-						break;
+				for(index = 0; index< quantidadeTexto; index++) {
+					if (ids[index] == id) {
+						exibirOrientacaoPesquisada(traducao, ids, tituloTexto, conteudoTexto, tipoTextoEscolhido, encontrado, index);
 					}
 				}
 				
@@ -253,4 +240,13 @@ public class Orientacao{
 	return presencaTexto;
 	}
 
+	public static void exibirOrientacaoPesquisada(Tradutor traducao, int[] ids, String[] tituloTexto, String[] conteudoTexto, String[] tipoTextoEscolhido, boolean encontrado, int index){
+		System.out.println(traducao.getProperty("orientacaoEncontrada"));
+		System.out.println("ID " + ids[index]);
+		System.out.println(traducao.getProperty("titulo") + tituloTexto[index]);
+		System.out.println(traducao.getProperty("conteudo") + conteudoTexto[index]);
+		System.out.println(traducao.getProperty("tipo")+ tipoTextoEscolhido[index]);
+		System.out.println("----------------------------------------------");
+		encontrado = true;
+	}
 }
