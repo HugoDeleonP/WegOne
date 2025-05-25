@@ -4,12 +4,6 @@ package projetoFinal;
 import java.util.Scanner;
 
 public class Principal {
-
-	static Orientacao orientacoes[] = new Orientacao[100];
-
-	static int index = 0;
-	static int quantidadeTexto = 0;
-	static int proximoId = 1;
 	
 	public static void main(String [] args) {       
 
@@ -68,45 +62,25 @@ public class Principal {
 
 		String tipoTexto[] = { "Manual de operação", "Procedimentos de segurança", "Manutenção e reparos", "Testes e diagnósticos", "Manual de conduta e Operações Setoriais" };
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoManualOperacao"), traducao.getProperty("mo1Titulo"), traducao.getProperty("mo1Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoManualOperacao"), traducao.getProperty("mo1Titulo"), traducao.getProperty("mo1Conteudo"));
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoManualOperacao"), traducao.getProperty("mo2Titulo"), traducao.getProperty("mo2Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoManualOperacao"), traducao.getProperty("mo2Titulo"), traducao.getProperty("mo2Conteudo"));
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoProcedimentoSeguranca"), traducao.getProperty("ps1Titulo"), traducao.getProperty("ps1Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoProcedimentoSeguranca"), traducao.getProperty("ps1Titulo"), traducao.getProperty("ps1Conteudo"));
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoProcedimentoSeguranca"), traducao.getProperty("ps2Titulo"), traducao.getProperty("ps2Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoProcedimentoSeguranca"), traducao.getProperty("ps2Titulo"), traducao.getProperty("ps2Conteudo"));
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoManutencaoReparo"), traducao.getProperty("mr1Titulo"), traducao.getProperty("mr1Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoManutencaoReparo"), traducao.getProperty("mr1Titulo"), traducao.getProperty("mr1Conteudo"));
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoManutencaoReparo"), traducao.getProperty("mr2Titulo"), traducao.getProperty("mr2Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoManutencaoReparo"), traducao.getProperty("mr2Titulo"), traducao.getProperty("mr2Conteudo"));
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoTesteDiagnostico"), traducao.getProperty("td1Titulo"), traducao.getProperty("td1Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoTesteDiagnostico"), traducao.getProperty("td1Titulo"), traducao.getProperty("td1Conteudo"));
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoTesteDiagnostico"), traducao.getProperty("td2Titulo"), traducao.getProperty("td2Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoTesteDiagnostico"), traducao.getProperty("td2Titulo"), traducao.getProperty("td2Conteudo"));
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoCondutaOperacoesSetoriais"), traducao.getProperty("mcos1Titulo"), traducao.getProperty("mcos1Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoCondutaOperacoesSetoriais"), traducao.getProperty("mcos1Titulo"), traducao.getProperty("mcos1Conteudo"));
 
-		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoCondutaOperacoesSetoriais"), traducao.getProperty("mcos2Titulo"), traducao.getProperty("mcos2Conteudo") );
-		quantidadeTexto++;
-		index++;
+		manager.adicionarOrientacaoPreDefinida(traducao.getProperty("tipoCondutaOperacoesSetoriais"), traducao.getProperty("mcos2Titulo"), traducao.getProperty("mcos2Conteudo"));
 
 		int escolhaNumero;
 		do {
@@ -120,11 +94,11 @@ public class Principal {
 			case 1:
 				// Cadastrar Orientação
 
-				manager.cadastrarOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
+				manager.cadastrarOrientacao( input, traducao);
 				break;
 			case 2:
 				// Pesquisar Orientação
-				manager.pesquisarOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
+				manager.pesquisarOrientacao(input, traducao);
 
 				break;
 			case 3:
@@ -134,7 +108,7 @@ public class Principal {
 			case 4:
 				// Excluir Orientação
 				System.out.println(traducao.getProperty("listagemTextos"));
-				manager.excluirOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
+				manager.excluirOrientacao(input, traducao);
 				break;
 			case 5:
 

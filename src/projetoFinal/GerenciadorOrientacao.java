@@ -13,7 +13,17 @@ public class GerenciadorOrientacao {
         this.quantidadeTexto = 0;
         this.proximoId = 1;
     }
-    public void cadastrarOrientacao(Scanner input, Orientacao[] orientacoes, Tradutor traducao, int index, int quantidadeTexto, int proximoId) {
+
+    public void adicionarOrientacaoPreDefinida(String tipo, String titulo, String conteudo){
+        if(quantidadeTexto < orientacoes.length){
+            orientacoes[quantidadeTexto] = new Orientacao(proximoId++, tipo, titulo, conteudo);
+            quantidadeTexto++;
+        } else {
+            System.out.println("Limite de orientações ultrapassado");
+        }
+    }
+
+    public void cadastrarOrientacao(Scanner input, Tradutor traducao) {
         String repeticaoCadastro;
         int escolhaTipoTexto;
 
@@ -64,10 +74,6 @@ public class GerenciadorOrientacao {
                 System.out.println(traducao.getProperty("perguntaRepeticaoCadastro"));
                 repeticaoCadastro = input.nextLine();
 
-                if(repeticaoCadastro.equalsIgnoreCase(traducao.getProperty("positivo"))){
-                    index++;
-                }
-
                 if(!repeticaoCadastro.equalsIgnoreCase(traducao.getProperty("positivo")) && !repeticaoCadastro.equalsIgnoreCase(traducao.getProperty("negativo"))){
                     System.out.println(traducao.getProperty("respostaInvalida"));
                 }
@@ -77,7 +83,7 @@ public class GerenciadorOrientacao {
 
     }
 
-    public void pesquisarOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, int index, int quantidadeTexto, int proximoId) {
+    public void pesquisarOrientacao(Scanner input, Tradutor traducao) {
         String repeticaoPesquisa;
 
         do {
@@ -90,9 +96,10 @@ public class GerenciadorOrientacao {
                 case 1:
                     System.out.println(traducao.getProperty("qualOrientacao"));
                     String titulo = input.nextLine();
-                    for (index = 0; index < orientacoes.length; index++) {
+                    for (int index = 0; index < quantidadeTexto; index++) {
                         if (orientacoes[index] != null && orientacoes[index].getTitulo().equalsIgnoreCase(titulo)) {
-                            exibirOrientacaoPesquisada(traducao, orientacoes, index);
+                            Orientacao orientacaoEncontrada = orientacoes[index];
+                            exibirOrientacaoPesquisada(orientacaoEncontrada, traducao);
                             encontrado = true;
                         }
                     }
@@ -108,9 +115,10 @@ public class GerenciadorOrientacao {
                     System.out.println(traducao.getProperty("digitarID"));
                     int idDigitado = input.nextInt();
                     input.nextLine();
-                    for(index = 0; index< quantidadeTexto; index++) {
+                    for(int index = 0; index< quantidadeTexto; index++) {
                         if (orientacoes[index].getId() == idDigitado) {
-                            exibirOrientacaoPesquisada(traducao, orientacoes, index);
+                            Orientacao orientacaoEncontrada = orientacoes[index];
+                            exibirOrientacaoPesquisada(orientacaoEncontrada, traducao);
                             encontrado = true;
                         }
                     }
@@ -138,13 +146,13 @@ public class GerenciadorOrientacao {
 
     }
 
-    public void excluirOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, int index, int quantidadeTexto, int proximoId) {
+    public void excluirOrientacao(Scanner input, Tradutor traducao) {
 
         String repeticaoExclusao;
 
         do {
 
-            if(!mostrarTextos(traducao, orientacoes, index, quantidadeTexto)) {
+            if(!mostrarTextos(traducao)) {
                 System.out.println(traducao.getProperty("semTextoExclusao"));
                 return;
             }
@@ -154,10 +162,10 @@ public class GerenciadorOrientacao {
             input.nextLine();
 
             boolean encontrado = false;
-            for(index = 0; index < quantidadeTexto; index++){
+            for(int index = 0; index < quantidadeTexto; index++){
                 if (orientacoes[index] != null && orientacoes[index].getId() == idDigitado) {
 
-                    orientacoes[index] = null;
+                    orientacoes[quantidadeTexto] = null;
 
                     for(int indiceDeslocamento = index; indiceDeslocamento < quantidadeTexto - 1; indiceDeslocamento++) {
                         orientacoes[indiceDeslocamento] = orientacoes[indiceDeslocamento + 1];
@@ -188,13 +196,13 @@ public class GerenciadorOrientacao {
 
     }
 
-    public boolean mostrarTextos( Tradutor traducao, Orientacao orientacoes[], int index, int quantidadeTexto){
+    public boolean mostrarTextos(Tradutor traducao){
 
         boolean presencaTexto = false;
 
-        index = 0;
+        int index = 0;
 
-        while(index < orientacoes.length){
+        while(index < quantidadeTexto){
 
             if(orientacoes[index] != null){
                 System.out.println(traducao.getProperty("espaco") + " "  + (index + 1) + "\n");
@@ -216,12 +224,12 @@ public class GerenciadorOrientacao {
         return presencaTexto;
     }
 
-    public static void exibirOrientacaoPesquisada(Tradutor traducao, Orientacao orientacoes[], int index){
+    public static void exibirOrientacaoPesquisada(Orientacao orientacaoEncontrada, Tradutor traducao){
         System.out.println(traducao.getProperty("orientacaoEncontrada"));
-        System.out.println("ID " + orientacoes[index].getId());
-        System.out.println(traducao.getProperty("titulo") + orientacoes[index].getTitulo());
-        System.out.println(traducao.getProperty("conteudo") + orientacoes[index].getConteudo());
-        System.out.println(traducao.getProperty("tipo")+ orientacoes[index].getTipo());
+        System.out.println("ID " + orientacaoEncontrada.getId());
+        System.out.println(traducao.getProperty("titulo") + orientacaoEncontrada.getTitulo());
+        System.out.println(traducao.getProperty("conteudo") + orientacaoEncontrada.getConteudo());
+        System.out.println(traducao.getProperty("tipo")+ orientacaoEncontrada.getTipo());
         System.out.println("----------------------------------------------");
     }
 }
