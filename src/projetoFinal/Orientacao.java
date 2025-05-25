@@ -118,6 +118,10 @@ public class Orientacao{
 
 	public void pesquisarOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, int index, int quantidadeTexto, int proximoId) {
 		String repeticaoPesquisa;
+
+		int id = orientacoes[index].id;
+		String tituloOrientacao = orientacoes[index].titulo;
+
 		do {
 			System.out.println(traducao.getProperty("perguntaPesquisaTipo"));
 			int opcao = input.nextInt();
@@ -128,9 +132,9 @@ public class Orientacao{
 			case 1:
 				System.out.println(traducao.getProperty("qualOrientacao"));
 				String titulo = input.nextLine();
-				for (index = 0; index < tituloTexto.length; index++) {
-					if (tituloTexto[index] != null && tituloTexto[index].equalsIgnoreCase(titulo)) {
-						exibirOrientacaoPesquisada(traducao, ids, tituloTexto, conteudoTexto, tipoTextoEscolhido, index);
+				for (index = 0; index < orientacoes.length; index++) {
+					if (orientacoes[index] != null && tituloOrientacao.equalsIgnoreCase(titulo)) {
+						exibirOrientacaoPesquisada(traducao, orientacoes, index);
 						encontrado = true;
 					}
 				}
@@ -144,11 +148,11 @@ public class Orientacao{
 
 			case 2:
 				System.out.println(traducao.getProperty("digitarID"));
-				int id = input.nextInt();
+				int idDigitado = input.nextInt();
 				input.nextLine();
                 for(index = 0; index< quantidadeTexto; index++) {
-					if (ids[index] == id) {
-						exibirOrientacaoPesquisada(traducao, ids, tituloTexto, conteudoTexto, tipoTextoEscolhido, index);
+					if (id == idDigitado) {
+						exibirOrientacaoPesquisada(traducao, orientacoes, index);
 						encontrado = true;
 					}
 				}
@@ -260,12 +264,12 @@ public class Orientacao{
 	return presencaTexto;
 	}
 
-	public static void exibirOrientacaoPesquisada(Tradutor traducao, int[] ids, String[] tituloTexto, String[] conteudoTexto, String[] tipoTextoEscolhido, int index){
+	public static void exibirOrientacaoPesquisada(Tradutor traducao, Orientacao orientacoes[], int index){
 		System.out.println(traducao.getProperty("orientacaoEncontrada"));
-		System.out.println("ID " + ids[index]);
-		System.out.println(traducao.getProperty("titulo") + tituloTexto[index]);
-		System.out.println(traducao.getProperty("conteudo") + conteudoTexto[index]);
-		System.out.println(traducao.getProperty("tipo")+ tipoTextoEscolhido[index]);
+		System.out.println("ID " + orientacoes[index].getId());
+		System.out.println(traducao.getProperty("titulo") + orientacoes[index].getTitulo());
+		System.out.println(traducao.getProperty("conteudo") + orientacoes[index].getConteudo());
+		System.out.println(traducao.getProperty("tipo")+ orientacoes[index].getTipo());
 		System.out.println("----------------------------------------------");
 	}
 }
