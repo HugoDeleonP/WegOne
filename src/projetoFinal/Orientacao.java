@@ -191,24 +191,25 @@ public class Orientacao{
 			System.out.println(traducao.getProperty("digitarTextoExclusao"));
 			int idDigitado = input.nextInt();
 			input.nextLine();
-			
-			index = idDigitado - 1;
-			
-			if (orientacoes[index] != null) {
 
-				orientacoes[index] = null;
+			boolean encontrado = false;
+			for(index = 0; index < quantidadeTexto; index++){
+				if (orientacoes[index] != null && orientacoes[index].getId() == idDigitado) {
 
-				System.out.println(traducao.getProperty("sucessoExcluir"));
-				
-				for(int indiceDeslocamento = index; indiceDeslocamento < quantidadeTexto - 1; indiceDeslocamento++) {
-					orientacoes[indiceDeslocamento] = orientacoes[indiceDeslocamento + 1];
+					orientacoes[index] = null;
+
+					System.out.println(traducao.getProperty("sucessoExcluir"));
+
+					for(int indiceDeslocamento = index; indiceDeslocamento < quantidadeTexto - 1; indiceDeslocamento++) {
+						orientacoes[indiceDeslocamento] = orientacoes[indiceDeslocamento + 1];
+					}
+					orientacoes[quantidadeTexto - 1] = null;
+					quantidadeTexto--;
+
 				}
-				orientacoes[quantidadeTexto - 1] = null;
-				quantidadeTexto--;
-				
 			}
 
-			else {
+			if (!encontrado){
 				System.out.println(traducao.getProperty("textoNãoExiste"));
 			}
 			do {
