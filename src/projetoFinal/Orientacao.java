@@ -28,7 +28,7 @@ public class Orientacao{
 		return conteudo;
 	}
 	
-	public void setConteúdo(String conteudo) {
+	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
 	}
 	
@@ -39,7 +39,7 @@ public class Orientacao{
 
 		String tituloDigitado;
 		String conteudoDigitado;
-		index = 10;
+		index = quantidadeTexto;
 
 		do{
 			do{
@@ -111,7 +111,8 @@ public class Orientacao{
 				String titulo = input.nextLine();
 				for (index = 0; index < tituloTexto.length; index++) {
 					if (tituloTexto[index] != null && tituloTexto[index].equalsIgnoreCase(titulo)) {
-						exibirOrientacaoPesquisada(traducao, ids, tituloTexto, conteudoTexto, tipoTextoEscolhido, encontrado, index);
+						exibirOrientacaoPesquisada(traducao, ids, tituloTexto, conteudoTexto, tipoTextoEscolhido, index);
+						encontrado = true;
 					}
 				}
 
@@ -126,10 +127,10 @@ public class Orientacao{
 				System.out.println(traducao.getProperty("digitarID"));
 				int id = input.nextInt();
 				input.nextLine();
-				encontrado = false;
-				for(index = 0; index< quantidadeTexto; index++) {
+                for(index = 0; index< quantidadeTexto; index++) {
 					if (ids[index] == id) {
-						exibirOrientacaoPesquisada(traducao, ids, tituloTexto, conteudoTexto, tipoTextoEscolhido, encontrado, index);
+						exibirOrientacaoPesquisada(traducao, ids, tituloTexto, conteudoTexto, tipoTextoEscolhido, index);
+						encontrado = true;
 					}
 				}
 				
@@ -240,13 +241,12 @@ public class Orientacao{
 	return presencaTexto;
 	}
 
-	public static void exibirOrientacaoPesquisada(Tradutor traducao, int[] ids, String[] tituloTexto, String[] conteudoTexto, String[] tipoTextoEscolhido, boolean encontrado, int index){
+	public static void exibirOrientacaoPesquisada(Tradutor traducao, int[] ids, String[] tituloTexto, String[] conteudoTexto, String[] tipoTextoEscolhido, int index){
 		System.out.println(traducao.getProperty("orientacaoEncontrada"));
 		System.out.println("ID " + ids[index]);
 		System.out.println(traducao.getProperty("titulo") + tituloTexto[index]);
 		System.out.println(traducao.getProperty("conteudo") + conteudoTexto[index]);
 		System.out.println(traducao.getProperty("tipo")+ tipoTextoEscolhido[index]);
 		System.out.println("----------------------------------------------");
-		encontrado = true;
 	}
 }
