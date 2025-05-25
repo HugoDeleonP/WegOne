@@ -119,9 +119,6 @@ public class Orientacao{
 	public void pesquisarOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, int index, int quantidadeTexto, int proximoId) {
 		String repeticaoPesquisa;
 
-		int id = orientacoes[index].id;
-		String tituloOrientacao = orientacoes[index].titulo;
-
 		do {
 			System.out.println(traducao.getProperty("perguntaPesquisaTipo"));
 			int opcao = input.nextInt();
@@ -133,7 +130,7 @@ public class Orientacao{
 				System.out.println(traducao.getProperty("qualOrientacao"));
 				String titulo = input.nextLine();
 				for (index = 0; index < orientacoes.length; index++) {
-					if (orientacoes[index] != null && tituloOrientacao.equalsIgnoreCase(titulo)) {
+					if (orientacoes[index] != null && orientacoes[index].getTitulo().equalsIgnoreCase(titulo)) {
 						exibirOrientacaoPesquisada(traducao, orientacoes, index);
 						encontrado = true;
 					}
@@ -151,7 +148,7 @@ public class Orientacao{
 				int idDigitado = input.nextInt();
 				input.nextLine();
                 for(index = 0; index< quantidadeTexto; index++) {
-					if (id == idDigitado) {
+					if (orientacoes[index].getId() == idDigitado) {
 						exibirOrientacaoPesquisada(traducao, orientacoes, index);
 						encontrado = true;
 					}
