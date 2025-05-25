@@ -52,17 +52,20 @@ public class Orientacao{
 	}
 	
 	// Método para cadastrar uma nova orientação
-	public void cadastrarOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
+	public void cadastrarOrientacao(Scanner input, Orientacao[] orientacoes, Tradutor traducao, int index, int quantidadeTexto, int proximoId) {
 		String repeticaoCadastro;
 		int escolhaTipoTexto;
 
+
 		String tituloDigitado;
 		String conteudoDigitado;
+		String tipoTextoEscolhido = null;
 
 		do{
 			do{
+
 				System.out.println(traducao.getProperty("tipoOrientacao"));
-				
+
 				escolhaTipoTexto = input.nextInt();
 				input.nextLine();
 
@@ -72,30 +75,28 @@ public class Orientacao{
 			} while (escolhaTipoTexto > 5 || escolhaTipoTexto < 1);
 
 			if(escolhaTipoTexto == 1){
-				tipoTextoEscolhido[index] = traducao.getProperty("tipoManualOperacao");
+				tipoTextoEscolhido = traducao.getProperty("tipoManualOperacao");
 			}
 			else if(escolhaTipoTexto == 2){
-				tipoTextoEscolhido[index] = traducao.getProperty("tipoProcedimentoSeguranca");
+				tipoTextoEscolhido = traducao.getProperty("tipoProcedimentoSeguranca");
 			}
 			else if (escolhaTipoTexto == 3) {
-				tipoTextoEscolhido[index] = traducao.getProperty("tipoManutencaoReparo");
+				tipoTextoEscolhido = traducao.getProperty("tipoManutencaoReparo");
 			}
 			else if (escolhaTipoTexto == 4){
-				tipoTextoEscolhido[index] = traducao.getProperty("tipoTesteDiagnostico");
+				tipoTextoEscolhido = traducao.getProperty("tipoTesteDiagnostico");
 			}
-			else if(escolhaTipoTexto == 5){
-				tipoTextoEscolhido[index] = traducao.getProperty("tipoCondutaOperacoesSetoriais");
+			else {
+				tipoTextoEscolhido = traducao.getProperty("tipoCondutaOperacoesSetoriais");
 			}
 
 			System.out.println(traducao.getProperty("comandoDigitoTitulo"));
 			tituloDigitado = input.nextLine();
-			tituloTexto[quantidadeTexto] = tituloDigitado;
 
 			System.out.println(traducao.getProperty("comandoDigitoConteudo"));
 			conteudoDigitado = input.nextLine();
-			conteudoTexto[quantidadeTexto] = conteudoDigitado;
-			
-			ids[quantidadeTexto] = proximoId++;
+
+			orientacoes[quantidadeTexto] = new Orientacao(proximoId++, tipoTextoEscolhido, tituloDigitado, conteudoDigitado);
 			quantidadeTexto++;
 
 			do{
@@ -115,7 +116,7 @@ public class Orientacao{
 
 	}
 
-	public void pesquisarOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
+	public void pesquisarOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, int index, int quantidadeTexto, int proximoId) {
 		String repeticaoPesquisa;
 		do {
 			System.out.println(traducao.getProperty("perguntaPesquisaTipo"));
@@ -175,7 +176,7 @@ public class Orientacao{
 
 	}
 
-	public void excluirOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
+	public void excluirOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, int index, int quantidadeTexto, int proximoId) {
 
 		String repeticaoExclusao;
 

@@ -120,11 +120,11 @@ public class Principal {
 			case 1:
 				// Cadastrar Orientação
 
-				managerOrientacao.cadastrarOrientacao(input, tituloTexto, conteudoTexto, tipoTexto, traducao, tipoTextoEscolhido, index, quantidadeTexto, ids, proximoId);
+				managerOrientacao.cadastrarOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
 				break;
 			case 2:
 				// Pesquisar Orientação
-				managerOrientacao.pesquisarOrientacao(input, tituloTexto, conteudoTexto, tipoTexto, traducao, tipoTextoEscolhido, index, quantidadeTexto, ids, proximoId);
+				managerOrientacao.pesquisarOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
 
 				break;
 			case 3:
@@ -134,7 +134,7 @@ public class Principal {
 			case 4:
 				// Excluir Orientação
 				System.out.println(traducao.getProperty("listagemTextos"));
-				managerOrientacao.excluirOrientacao(input, tituloTexto, conteudoTexto, tipoTexto, traducao, tipoTextoEscolhido, index, quantidadeTexto, ids, proximoId);
+				managerOrientacao.excluirOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
 				break;
 			case 5:
 
