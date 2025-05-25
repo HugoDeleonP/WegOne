@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class Orientacao{
 
-	String tipo;
-	String titulo;
-	String conteudo;
+	private int id;
+	private String tipo;
+	private String titulo;
+	private String conteudo;
 	
 	public String getTipo() {
 		return tipo;
@@ -39,7 +40,6 @@ public class Orientacao{
 
 		String tituloDigitado;
 		String conteudoDigitado;
-		index = quantidadeTexto;
 
 		do{
 			do{
