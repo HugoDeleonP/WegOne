@@ -186,7 +186,7 @@ public class Orientacao{
 
 		do {
 			
-			if(!mostrarTextos(traducao, tituloTexto, conteudoTexto, tipoTextoEscolhido, index, quantidadeTexto, ids)) {
+			if(!mostrarTextos(traducao, orientacoes, index, quantidadeTexto)) {
 				System.out.println(traducao.getProperty("semTextoExclusao"));
 	            return;
 			}
@@ -197,24 +197,16 @@ public class Orientacao{
 			
 			index = idDigitado - 1;
 			
-			if (tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null) {
+			if (orientacoes[index] != null) {
 
-				tituloTexto[index] = null;
-				conteudoTexto[index] = null;
-				tipoTextoEscolhido[index] = null;
+				orientacoes[index] = null;
 
 				System.out.println(traducao.getProperty("sucessoExcluir"));
 				
 				for(int indiceDeslocamento = index; indiceDeslocamento < quantidadeTexto - 1; indiceDeslocamento++) {
-					tituloTexto[indiceDeslocamento] = tituloTexto[indiceDeslocamento + 1];
-					conteudoTexto[indiceDeslocamento] = conteudoTexto[indiceDeslocamento + 1];
-					tipoTextoEscolhido[indiceDeslocamento] = tipoTextoEscolhido[indiceDeslocamento + 1];
-					ids[indiceDeslocamento] = ids[indiceDeslocamento + 1];
+					orientacoes[indiceDeslocamento] = orientacoes[indiceDeslocamento + 1];
 				}
-				tituloTexto[quantidadeTexto - 1] = null;
-				conteudoTexto[quantidadeTexto - 1] = null;
-				tipoTextoEscolhido[quantidadeTexto - 1] = null;
-				ids[quantidadeTexto - 1] = 0;
+				orientacoes[quantidadeTexto - 1] = null;
 				quantidadeTexto--;
 				
 			}
@@ -236,20 +228,20 @@ public class Orientacao{
 
 	}
 
-	public boolean mostrarTextos( Tradutor traducao, Orientacao orientacoes[], int index, int quantidadeTexto, int[] ids){
+	public boolean mostrarTextos( Tradutor traducao, Orientacao orientacoes[], int index, int quantidadeTexto){
 	
 	boolean presencaTexto = false;
 	
 	index = 0;
 	
-	while(index < tituloTexto.length && index < conteudoTexto.length && index < tipoTextoEscolhido.length){
+	while(index < orientacoes.length){
 
-		if(tituloTexto[index] != null && conteudoTexto[index] != null && tipoTextoEscolhido[index] != null){
+		if(orientacoes[index] != null){
 			System.out.println(traducao.getProperty("espaco") + " "  + (index + 1) + "\n");
-			System.out.println("ID " + (ids[index]) + " -");
-			System.out.println(traducao.getProperty("titulo") + " " + tituloTexto[index] + "\n");
-			System.out.println(traducao.getProperty("conteudo") + " "+ conteudoTexto[index] + "\n");
-			System.out.println(traducao.getProperty("tipo") + " " + tipoTextoEscolhido[index] + "\n");
+			System.out.println("ID " + (orientacoes[index].getId()) + " -");
+			System.out.println(traducao.getProperty("titulo") + " " + orientacoes[index].getTitulo() + "\n");
+			System.out.println(traducao.getProperty("conteudo") + " "+ orientacoes[index].getConteudo() + "\n");
+			System.out.println(traducao.getProperty("tipo") + " " + orientacoes[index].getTipo() + "\n");
 			System.out.println("----------------------------------------------");
 			presencaTexto = true;
 		}
