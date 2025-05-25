@@ -18,61 +18,52 @@ Dentro do sistema,a versão do Java JDK é muito importante para fluidez do proj
 * Recomenda-se que o Visual Studio Code esteja de acordo com a versão mais recente, a fim de garantir mais estabilidade e compatibilidade do código, e a extensão **"Extension Pack for Java"**.
 * Recomenda-se que a IDE Eclipse também esteja na última versão, devido aos mesmos motivos citados acerca do Visual Studio Code.
 * Recomenda-se que a versão do Java Development Kit seja, no mínimo, o JDK 17. A fim de possibilitar a funcionalidade do código dentro do terminal.
-## 📘 Guia Rápido: Como Fazer Commit no Git Usando o Terminal da IDE
+  
+## 🚀 Passo a Passo para Clonar um Repositório
+### 🔗 1. Copiar a URL do Repositório
+- Vá até o repositório no GitHub, GitLab, Bitbucket, etc.
+- Clique no botão **"Code"** (ou similar)
+- Copie a URL no formato **HTTPS** ou **SSH**
+Exemplo de URL HTTPS:
+```
+https://github.com/usuario/nome-do-repositorio.git
+```
+---
+### 🖥️ 2. Abrir o Terminal da IDE
+Abra o terminal embutido da sua IDE ou use um terminal externo.
+* VS Code: `Ctrl + '`  
+* IntelliJ: `View > Tool Windows > Terminal`
+* Eclipse:  
+  I. Vá em `Window > Show View > Other...`  
+  II. Procure por `Terminal` e clique em `OK`  
+  III. A aba do terminal aparecerá (pode ser necessário instalar o plugin "TM Terminal" se não estiver disponível)
 
-#### Este guia mostra como configurar o Git e fazer commits diretamente pelo terminal da sua IDE (como VS Code, Eclipse, etc.).
 ---
-#### ✅ 1. Configurar o Usuário do Git
-Antes de fazer commits, configure seu nome e e-mail (você só precisa fazer isso uma vez por máquina):
+
+### 📁 3. Escolher a Pasta Onde o Repositório Será Clonado
+
+Navegue até o diretório onde você quer salvar o projeto:
 ```bash
-git config --global user.name "Seu Nome"
-git config --global user.email "seuemail@exemplo.com"
-```
-Verifique se foi configurado corretamente:
-```bash
-git config --global --list
+cd caminho/onde/quer/clonar
 ```
 ---
-#### 📁 2. Acessar o Terminal da IDE e Navegar até seu Projeto
-Abra o terminal integrado da sua IDE e vá até a pasta do projeto:
+### 📦 4. Clonar o Repositório
+Use o comando `git clone` seguido da URL copiada:
 ```bash
-cd caminho/para/seu/projeto
+git clone https://github.com/usuario/nome-do-repositorio.git
 ```
 ---
-#### 📋 3. Verificar o Status do Git
-Veja os arquivos modificados ou não rastreados:
+### 📂 5. Acessar a Pasta do Projeto Clonado
+Depois de clonar, entre na pasta do projeto:
 ```bash
-git status
+cd nome-do-repositorio
 ```
 ---
-#### ➕ 4. Adicionar Arquivos para o Commit
-- Para adicionar **todos os arquivos modificados**:
-```bash
-git add .
-```
-- Para adicionar **um arquivo específico**:
-```bash
-git add nome-do-arquivo.extensao
-```
+### ✅ Pronto!
+Agora você tem uma cópia local completa do repositório e pode começar a trabalhar com ele!  
+Você pode usar os comandos `git status`, `git add`, `git commit`, etc., normalmente.
+
 ---
-#### 📝 5. Criar o Commit com uma Mensagem
-Crie um commit com uma descrição do que foi alterado:
-```bash
-git commit -m "mensagem explicando o que foi alterado"
-```
----
-#### 📤 6. (Opcional) Enviar para o Repositório Remoto
-Se você estiver usando um repositório no GitHub, GitLab, etc., envie suas alterações com:
-```bash
-git push origin nome-da-branch
-```
-Exemplo comum:
-```bash
-git push origin main
-```
----
-✅ Pronto! Seu código foi commitado (e enviado, se fez o push). 🚀
- 
 ## 🪖 Integrantes
 * Catarina Klein- *Product Owner* -[Catarina0830](https://github.com/Catarina0830)
 * Eduardo Dias da Maia- *Dev* -[EduardoDias1902](https://github.com/EduardoDias1902)
