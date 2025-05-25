@@ -15,7 +15,7 @@ public class Principal {
 
 		Scanner input = new Scanner(System.in);
 
-		Orientacao managerOrientacao = new Orientacao();
+		GerenciadorOrientacao manager = new GerenciadorOrientacao();
 
 		System.out.println("┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐");
 		System.out.println("│I8,        8        ,8I  88888888888  ,ad8888ba,           ,ad8888ba,                                   │");
@@ -120,11 +120,11 @@ public class Principal {
 			case 1:
 				// Cadastrar Orientação
 
-				managerOrientacao.cadastrarOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
+				manager.cadastrarOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
 				break;
 			case 2:
 				// Pesquisar Orientação
-				managerOrientacao.pesquisarOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
+				manager.pesquisarOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
 
 				break;
 			case 3:
@@ -134,7 +134,7 @@ public class Principal {
 			case 4:
 				// Excluir Orientação
 				System.out.println(traducao.getProperty("listagemTextos"));
-				managerOrientacao.excluirOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
+				manager.excluirOrientacao(input, orientacoes, traducao, index, quantidadeTexto, proximoId);
 				break;
 			case 5:
 
