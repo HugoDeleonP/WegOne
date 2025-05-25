@@ -151,14 +151,15 @@ public class GerenciadorOrientacao {
 
                     orientacoes[index] = null;
 
-                    System.out.println(traducao.getProperty("sucessoExcluir"));
-
                     for(int indiceDeslocamento = index; indiceDeslocamento < quantidadeTexto - 1; indiceDeslocamento++) {
                         orientacoes[indiceDeslocamento] = orientacoes[indiceDeslocamento + 1];
                     }
                     orientacoes[quantidadeTexto - 1] = null;
                     quantidadeTexto--;
 
+                    System.out.println(traducao.getProperty("sucessoExcluir"));
+                    encontrado = true;
+                    break;
                 }
             }
 
