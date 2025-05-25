@@ -52,7 +52,7 @@ public class Orientacao{
 	}
 	
 	// Método para cadastrar uma nova orientação
-	public void cadastrarOrientacao(Scanner input, String[] tituloTexto, String[] conteudoTexto, String[] tipoTexto, Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
+	public void cadastrarOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
 		String repeticaoCadastro;
 		int escolhaTipoTexto;
 
@@ -115,7 +115,7 @@ public class Orientacao{
 
 	}
 
-	public void pesquisarOrientacao(Scanner input, String[] tituloTexto, String[] conteudoTexto, String[] tipoTexto, Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
+	public void pesquisarOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
 		String repeticaoPesquisa;
 		do {
 			System.out.println(traducao.getProperty("perguntaPesquisaTipo"));
@@ -175,7 +175,7 @@ public class Orientacao{
 
 	}
 
-	public void excluirOrientacao(Scanner input, String[] tituloTexto, String[] conteudoTexto, String[] tipoTexto, Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
+	public void excluirOrientacao(Scanner input, Orientacao orientacoes[], Tradutor traducao, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids, int proximoId) {
 
 		String repeticaoExclusao;
 
@@ -231,7 +231,7 @@ public class Orientacao{
 
 	}
 
-	public boolean mostrarTextos( Tradutor traducao, String[] tituloTexto, String[] conteudoTexto, String[] tipoTextoEscolhido, int index, int quantidadeTexto, int[] ids){
+	public boolean mostrarTextos( Tradutor traducao, Orientacao orientacoes[], int index, int quantidadeTexto, int[] ids){
 	
 	boolean presencaTexto = false;
 	

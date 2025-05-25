@@ -5,11 +5,7 @@ import java.util.Scanner;
 
 public class Principal {
 
-	static int ids[] = new int[100];
-	static String tituloTexto[] = new String[100];
-	static String conteudoTexto[] = new String[100];
-	static String tipoTextoEscolhido[] = new String[100];
-	static Orientacao orientacao[] = new Orientacao[100];
+	static Orientacao orientacoes[] = new Orientacao[100];
 
 	static int index = 0;
 	static int quantidadeTexto = 0;
@@ -18,7 +14,7 @@ public class Principal {
 	public static void main(String [] args) {       
 
 		Scanner input = new Scanner(System.in);
-		
+
 		Orientacao managerOrientacao = new Orientacao();
 
 		System.out.println("┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐");
@@ -71,75 +67,44 @@ public class Principal {
 		Tradutor traducao = Tradutor.getInstance(idioma);
 
 		String tipoTexto[] = { "Manual de operação", "Procedimentos de segurança", "Manutenção e reparos", "Testes e diagnósticos", "Manual de conduta e Operações Setoriais" };
-		
-		tituloTexto[0] = traducao.getProperty("mo1Titulo");
-		conteudoTexto[0] = traducao.getProperty("mo1Conteudo");
-		tipoTextoEscolhido[0] = traducao.getProperty("tipoManualOperacao");
-		ids[quantidadeTexto] = proximoId++;
-		quantidadeTexto++;
-		index++;
-		
-		tituloTexto[1] = traducao.getProperty("mo2Titulo");
-		conteudoTexto[1] = traducao.getProperty("mo2Conteudo");
-		tipoTextoEscolhido[1] = traducao.getProperty("tipoManualOperacao");
-		ids[quantidadeTexto] = proximoId++;
+
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoManualOperacao"), traducao.getProperty("mo1Titulo"), traducao.getProperty("mo1Conteudo") );
 		quantidadeTexto++;
 		index++;
 
-		
-		tituloTexto[2] = traducao.getProperty("ps1Titulo");
-		conteudoTexto[2] = traducao.getProperty("ps1Conteudo");
-		tipoTextoEscolhido[2] = traducao.getProperty("tipoProcedimentoSeguranca");
-		ids[quantidadeTexto] = proximoId++;
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoManualOperacao"), traducao.getProperty("mo2Titulo"), traducao.getProperty("mo2Conteudo") );
 		quantidadeTexto++;
 		index++;
 
-		tituloTexto[3] = traducao.getProperty("ps2Titulo");
-		conteudoTexto[3] = traducao.getProperty("ps2Conteudo");
-		tipoTextoEscolhido[3] = traducao.getProperty("tipoProcedimentoSeguranca");
-		ids[quantidadeTexto] = proximoId++;
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoProcedimentoSeguranca"), traducao.getProperty("ps1Titulo"), traducao.getProperty("ps1Conteudo") );
 		quantidadeTexto++;
 		index++;
 
-		tituloTexto[4] = traducao.getProperty("mr1Titulo");
-		conteudoTexto[4] = traducao.getProperty("mr1Conteudo");
-		tipoTextoEscolhido[4] = traducao.getProperty("tipoManutencaoReparo");
-		ids[quantidadeTexto] = proximoId++;
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoProcedimentoSeguranca"), traducao.getProperty("ps2Titulo"), traducao.getProperty("ps2Conteudo") );
 		quantidadeTexto++;
 		index++;
 
-		tituloTexto[5] = traducao.getProperty("mr2Titulo");
-		conteudoTexto[5] = traducao.getProperty("mr2Conteudo");
-		tipoTextoEscolhido[5] = traducao.getProperty("tipoManutencaoReparo");
-		ids[quantidadeTexto] = proximoId++;
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoManutencaoReparo"), traducao.getProperty("mr1Titulo"), traducao.getProperty("mr1Conteudo") );
 		quantidadeTexto++;
 		index++;
 
-		tituloTexto[6] = traducao.getProperty("td1Titulo");
-		conteudoTexto[6] = traducao.getProperty("td1Conteudo");
-		tipoTextoEscolhido[6] = traducao.getProperty("tipoTesteDiagnostico");
-		ids[quantidadeTexto] = proximoId++;
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoManutencaoReparo"), traducao.getProperty("mr2Titulo"), traducao.getProperty("mr2Conteudo") );
 		quantidadeTexto++;
 		index++;
 
-		tituloTexto[7] = traducao.getProperty("td2Titulo");
-		conteudoTexto[7] = traducao.getProperty("td2Conteudo");
-		tipoTextoEscolhido[7] = traducao.getProperty("tipoTesteDiagnostico");
-		ids[quantidadeTexto] = proximoId++;
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoTesteDiagnostico"), traducao.getProperty("td1Titulo"), traducao.getProperty("td1Conteudo") );
 		quantidadeTexto++;
 		index++;
 
-		tituloTexto[8] = traducao.getProperty("mcos1Titulo");
-		conteudoTexto[8] = traducao.getProperty("mcos1Conteudo");
-		tipoTextoEscolhido[8] = traducao.getProperty("tipoCondutaOperacoesSetoriais");
-		ids[quantidadeTexto] = proximoId++;
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoTesteDiagnostico"), traducao.getProperty("td2Titulo"), traducao.getProperty("td2Conteudo") );
 		quantidadeTexto++;
 		index++;
 
-		tituloTexto[9] = traducao.getProperty("mcos2Titulo");
-		conteudoTexto[9] = traducao.getProperty("mcos2Conteudo");
-		tipoTextoEscolhido[9] = traducao.getProperty("tipoCondutaOperacoesSetoriais");
-		ids[quantidadeTexto] = proximoId++;
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoCondutaOperacoesSetoriais"), traducao.getProperty("mcos1Titulo"), traducao.getProperty("mcos1Conteudo") );
+		quantidadeTexto++;
+		index++;
+
+		orientacoes[quantidadeTexto] = new Orientacao(proximoId++, traducao.getProperty("tipoCondutaOperacoesSetoriais"), traducao.getProperty("mcos2Titulo"), traducao.getProperty("mcos2Conteudo") );
 		quantidadeTexto++;
 		index++;
 
