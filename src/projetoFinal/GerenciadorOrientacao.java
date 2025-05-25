@@ -4,7 +4,15 @@ import java.util.Scanner;
 
 public class GerenciadorOrientacao {
 
+    private Orientacao[] orientacoes;
+    private int quantidadeTexto;
+    private int proximoId;
 
+    public GerenciadorOrientacao(){
+        this.orientacoes = new Orientacao[100];
+        this.quantidadeTexto = 0;
+        this.proximoId = 1;
+    }
     public void cadastrarOrientacao(Scanner input, Orientacao[] orientacoes, Tradutor traducao, int index, int quantidadeTexto, int proximoId) {
         String repeticaoCadastro;
         int escolhaTipoTexto;
