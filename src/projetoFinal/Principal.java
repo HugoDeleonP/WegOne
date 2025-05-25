@@ -9,6 +9,8 @@ public class Principal {
 	static String tituloTexto[] = new String[100];
 	static String conteudoTexto[] = new String[100];
 	static String tipoTextoEscolhido[] = new String[100];
+	static Orientacao orientacao[] = new Orientacao[100];
+
 	static int index = 0;
 	static int quantidadeTexto = 0;
 	static int proximoId = 1;
@@ -18,13 +20,6 @@ public class Principal {
 		Scanner input = new Scanner(System.in);
 		
 		Orientacao managerOrientacao = new Orientacao();
-
-        // Método construtor
-        /*Texto[] textos = new Texto [100];
-        
-        Texto textoPredefinido = new Texto(traducao.getProperty("tipoManualOperacao"), traducao.getProperty("mo1Titulo"), traducao.getProperty("mo1Conteudo"));
-        textos[0] = textoPredefinido;
-        */
 
 		System.out.println("┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐");
 		System.out.println("│I8,        8        ,8I  88888888888  ,ad8888ba,           ,ad8888ba,                                   │");

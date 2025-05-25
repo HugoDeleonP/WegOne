@@ -8,7 +8,25 @@ public class Orientacao{
 	private String tipo;
 	private String titulo;
 	private String conteudo;
-	
+
+	public Orientacao(int id, String tipo, String titulo, String conteudo){
+		this.id = id;
+		this.tipo = tipo;
+		this.titulo = titulo;
+		this.conteudo = conteudo;
+	}
+
+	public Orientacao(){
+
+	}
+
+	public int getId(){
+		return id;
+	}
+
+	public void setId(int id){
+		this.id = id;
+	}
 	public String getTipo() {
 		return tipo;
 	}
