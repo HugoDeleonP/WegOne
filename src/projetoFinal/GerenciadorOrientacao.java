@@ -202,10 +202,10 @@ public class GerenciadorOrientacao {
 
         int index = 0;
 
+
         while(index < quantidadeTexto){
 
             if(orientacoes[index] != null){
-                System.out.println(traducao.getProperty("espaco") + " "  + (index + 1) + "\n");
                 System.out.println("ID " + (orientacoes[index].getId()) + " -");
                 System.out.println(traducao.getProperty("titulo") + " " + orientacoes[index].getTitulo() + "\n");
                 System.out.println(traducao.getProperty("conteudo") + " "+ orientacoes[index].getConteudo() + "\n");
