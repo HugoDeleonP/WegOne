@@ -145,7 +145,12 @@ public class GerenciadorOrientacao {
         } while (repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("positivo")));
 
     }
+    public void editarOrientacao(Scanner input, Tradutor traducao){
 
+        if(mostrarTextos.isEmpty()){
+            System.err.println(traducao.getProperty("semTexto"));
+        }
+    }
     public void excluirOrientacao(Scanner input, Tradutor traducao) {
 
         String repeticaoExclusao;

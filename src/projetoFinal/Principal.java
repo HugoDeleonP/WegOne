@@ -103,7 +103,7 @@ public class Principal {
 				break;
 			case 3:
 				// Editar Orientação
-				System.out.println("Funcionalidade em manutenção!");
+				manager.editarOrientacao(input, traducao);
 				break;
 			case 4:
 				// Excluir Orientação
