@@ -12,6 +12,8 @@ Batizada de WegOne,permite que todos colaboradores da empresa possam ter acesso 
 * [Visual Studio Code](https://code.visualstudio.com/)-> É um editor de código-fonte desenvolvido pela Microsoft para Windows, Linux e macOS.
 * [Eclipse](https://eclipseide.org/)-> É uma IDE livre para desenvolvimento Java criado em 2001 pela IBM, que tem suporte a várias outras linguagens a partir de plugins como: C/C++, PHP, ColdFusion, Python, Scala e, Kotlin.
 * [GitHub](https://github.com/)->É uma plataforma de hospedagem de código-fonte e arquivos com controle de versão usando o Git.
+* [MySQL](https://www.mysql.com/)->É um sistema de gerenciamento de banco de dados (SGBD), que utiliza a linguagem SQL (Linguagem de Consulta Estruturada, do inglês Structured Query Language) como interface.
+* [IntelliJ](https://www.jetbrains.com/pt-br/idea/)-> é um ambiente de desenvolvimento integrado (IDE) escrito em Java para o desenvolvimento de software de computador escrito em Java, Kotlin, Groovy e outras linguagens baseadas em JVM.
 ## 🤖 Versão utilizada do JAVA
 Dentro do sistema,a versão do Java JDK é muito importante para fluidez do projeto geral,ao todo,utilizamos a versão **Java JDK 17** ,já que é uma versão mais estável,popular e padrão do próprio Java
 ## 📋 Requisitos mínimos para utilizar o manual
