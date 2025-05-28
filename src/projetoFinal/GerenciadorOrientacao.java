@@ -145,12 +145,104 @@ public class GerenciadorOrientacao {
         } while (repeticaoPesquisa.equalsIgnoreCase(traducao.getProperty("positivo")));
 
     }
-    public void editarOrientacao(Scanner input, Tradutor traducao){
+    
+    public void editarOrientacao(Scanner input, Tradutor traducao) {
+        if (!mostrarTextos(traducao)) {
+            System.err.println(traducao.getProperty("semTextoEdicao"));
+            return;
+        }
+        boolean editarMais = true;
+        while (editarMais) {
+            System.out.print(traducao.getProperty("digitarID"));
+            int id = -1;
+            if (input.hasNextInt()) {
+                id = input.nextInt();
+                input.nextLine(); 
+            } else {
+                System.err.println(traducao.getProperty("numeroInvalido"));
+                input.nextLine(); 
+                continue;
+            }
 
-        if(mostrarTextos.isEmpty()){
-            System.err.println(traducao.getProperty("semTexto"));
+            Orientacao orientacaoEncontrada = null;
+            for (int i = 0; i < quantidadeTexto; i++) {
+                if (orientacoes[i] != null && orientacoes[i].getId() == id) {
+                    orientacaoEncontrada = orientacoes[i];
+                    break;
+                }
+            }
+            if (orientacaoEncontrada == null) {
+                System.err.println(traducao.getProperty("semOrientacao"));
+                continue;
+            }
+
+            exibirOrientacaoPesquisada(orientacaoEncontrada, traducao);
+
+            boolean continuarEditando = true;
+            while (continuarEditando) {
+                System.out.println(traducao.getProperty("oQueEditar"));
+                System.out.println("1 - " + traducao.getProperty("tipo"));
+                System.out.println("2 - " + traducao.getProperty("titulo"));
+                System.out.println("3 - " + traducao.getProperty("conteudo"));
+                int opcaoEditar = -1;
+                if (input.hasNextInt()) {
+                    opcaoEditar = input.nextInt();
+                    input.nextLine(); 
+                } else {
+                    System.err.println(traducao.getProperty("numeroInvalido"));
+                    input.nextLine(); 
+                    continue;
+                }
+                if (opcaoEditar < 1 || opcaoEditar > 3) {
+                    System.err.println(traducao.getProperty("respostaInvalida"));
+                    continue;
+                }
+                switch (opcaoEditar) {
+                    case 1:
+                        System.out.println(traducao.getProperty("tipo"));
+                        orientacaoEncontrada.setTipo(input.nextLine());
+                        break;
+                    case 2:
+                        System.out.println(traducao.getProperty("titulo"));
+                        orientacaoEncontrada.setTitulo(input.nextLine());
+                        break;
+                    case 3:
+                        System.out.println(traducao.getProperty("conteudo"));
+                        orientacaoEncontrada.setConteudo(input.nextLine());
+                        break;
+                }
+
+                do {
+                    System.out.println(traducao.getProperty("continuarEditar"));
+                    String resposta = input.nextLine().trim();
+                    if (resposta.equalsIgnoreCase(traducao.getProperty("negativo"))) {
+                        continuarEditando = false;
+                        break;
+                    } else if (resposta.equalsIgnoreCase(traducao.getProperty("positivo"))) {
+                        continuarEditando = true;
+                        break;
+                    } else {
+                        System.err.println(traducao.getProperty("respostaInvalida"));
+                    }
+                } while (true);
+            }
+
+            do {
+                System.out.println(traducao.getProperty("editarOutra"));
+                String resposta = input.nextLine().trim();
+                if (resposta.equalsIgnoreCase(traducao.getProperty("negativo"))) {
+                    editarMais = false;
+                    break;
+                } else if (resposta.equalsIgnoreCase(traducao.getProperty("positivo"))) {
+                    editarMais = true;
+                    break;
+                } else {
+                    System.err.println(traducao.getProperty("respostaInvalida"));
+                }
+            } while (true);
         }
     }
+    
     public void excluirOrientacao(Scanner input, Tradutor traducao) {
 
         String repeticaoExclusao;
