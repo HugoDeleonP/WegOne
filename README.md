@@ -50,13 +50,13 @@ cd caminho/onde/quer/clonar
 ### 📦 4. Clonar o Repositório
 Use o comando `git clone` seguido da URL copiada:
 ```bash
-git clone https://github.com/usuario/nome-do-repositorio.git
+git clone https://github.com/HugoDeleonP/WegOne.git
 ```
 ---
 ### 📂 5. Acessar a Pasta do Projeto Clonado
 Depois de clonar, entre na pasta do projeto:
 ```bash
-cd nome-do-repositorio
+cd WegOne
 ```
 ---
 ### ✅ Pronto!
