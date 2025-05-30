@@ -198,10 +198,49 @@ public class GerenciadorOrientacao {
                     continue;
                 }
                 switch (opcaoEditar) {
-                    case 1:
-                        System.out.println(traducao.getProperty("tipo"));
-                        orientacaoEncontrada.setTipo(input.nextLine());
-                        break;
+                case 1:
+                    System.out.println(traducao.getProperty("selecaoTipo"));
+                    String resposta = input.nextLine().trim();
+                    if (resposta.equalsIgnoreCase(traducao.getProperty("positivo"))) {
+                       
+                        System.out.println(traducao.getProperty("selecaoTipo"));
+                        for (int i = 0; i < 1; i++) {
+                            if (orientacoes[i] != null) {
+                                System.out.println(traducao.getProperty("tipoOrientacao"));
+                            }
+                        }
+                        System.out.print((traducao.getProperty("digitarIDTipo")));
+                        int idTipoSelecionado = -1;
+                        if (input.hasNextInt()) {
+                            idTipoSelecionado = input.nextInt();
+                            input.nextLine();
+                        } else {
+                            System.out.println(traducao.getProperty("numeroInvalido"));
+                            input.nextLine();
+                            break;
+                        }
+                       
+                        boolean tipoEncontrado = false;
+                        for (int i = 0; i < quantidadeTexto; i++) {
+                            if (orientacoes[i] != null && orientacoes[i].getId() == idTipoSelecionado) {
+                                orientacaoEncontrada.setTipo(orientacoes[i].getTipo());
+                                tipoEncontrado = true;
+                                System.out.println((traducao.getProperty("tipoSelecionado")) + orientacoes[i].getTipo());
+                                break;
+                            }
+                        }
+                        if (!tipoEncontrado) {
+                            System.out.println("ID inválido. Nenhum tipo alterado.");
+                        }
+                    } else if (resposta.equalsIgnoreCase(traducao.getProperty("negativo"))) {
+                        System.out.println(traducao.getProperty("adicionarTipo"));
+                        String novoTipo = input.nextLine();
+                        orientacaoEncontrada.setTipo(novoTipo);
+                    } else {
+                        System.out.println(traducao.getProperty("respostaInvalida"));
+                    }
+                    break;
+
                     case 2:
                         System.out.println(traducao.getProperty("titulo"));
                         orientacaoEncontrada.setTitulo(input.nextLine());
