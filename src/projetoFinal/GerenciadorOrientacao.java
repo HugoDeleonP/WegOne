@@ -131,15 +131,8 @@ public class GerenciadorOrientacao {
         boolean editarMais = true;
         while (editarMais) {
             System.out.print(traducao.getProperty("digitarID"));
-            int id;
-            if (input.hasNextInt()) {
-                id = input.nextInt();
-                input.nextLine();
-            } else {
-                System.out.println(traducao.getProperty("numeroInvalido"));
-                input.nextLine();
-                continue;
-            }
+            int id = lerInteiro(input, traducao, "respostaInvalida");
+            if (id == 0) continue;
 
             Orientacao orientacaoEncontrada = null;
             for (index = 0; index < quantidadeTexto; index++) {
@@ -161,15 +154,7 @@ public class GerenciadorOrientacao {
                 System.out.println("1 - " + traducao.getProperty("tipo"));
                 System.out.println("2 - " + traducao.getProperty("titulo"));
                 System.out.println("3 - " + traducao.getProperty("conteudo"));
-                int opcaoEditar;
-                if (input.hasNextInt()) {
-                    opcaoEditar = input.nextInt();
-                    input.nextLine();
-                } else {
-                    System.out.println(traducao.getProperty("numeroInvalido"));
-                    input.nextLine();
-                    continue;
-                }
+                int opcaoEditar = lerInteiro(input, traducao, "respostaInvalida");
                 if (opcaoEditar < 1 || opcaoEditar > 3) {
                     System.out.println(traducao.getProperty("respostaInvalida"));
                     continue;
@@ -347,5 +332,17 @@ public class GerenciadorOrientacao {
         } while (true);
 
         return tipoTextoEscolhido;
+    }
+
+    public int lerInteiro(Scanner input, Tradutor traducao, String mensagem){
+        if (input.hasNextInt()){
+            int variavel = input.nextInt();
+            input.nextLine();
+            return variavel;
+        } else {
+            System.out.println(traducao.getProperty("respostaInvalida"));
+            input.nextLine();
+            return 0;
+        }
     }
 }
