@@ -30,32 +30,11 @@ public class GerenciadorOrientacao {
 
         String tituloDigitado;
         String conteudoDigitado;
-        String tipoTextoEscolhido = null;
+        String tipoTextoEscolhido;
 
         do {
-            do {
-
-                System.out.println(traducao.getProperty("tipoOrientacao"));
-
-                escolhaTipoTexto = input.nextInt();
-                input.nextLine();
-
-                if (escolhaTipoTexto > 5 || escolhaTipoTexto < 1) {
-                    System.out.println(traducao.getProperty("numeroInvalido"));
-                }
-            } while (escolhaTipoTexto > 5 || escolhaTipoTexto < 1);
-
-            if (escolhaTipoTexto == 1) {
-                tipoTextoEscolhido = traducao.getProperty("tipoManualOperacao");
-            } else if (escolhaTipoTexto == 2) {
-                tipoTextoEscolhido = traducao.getProperty("tipoProcedimentoSeguranca");
-            } else if (escolhaTipoTexto == 3) {
-                tipoTextoEscolhido = traducao.getProperty("tipoManutencaoReparo");
-            } else if (escolhaTipoTexto == 4) {
-                tipoTextoEscolhido = traducao.getProperty("tipoTesteDiagnostico");
-            } else {
-                tipoTextoEscolhido = traducao.getProperty("tipoCondutaOperacoesSetoriais");
-            }
+            System.out.println(traducao.getProperty("tipoOrientacao"));
+            tipoTextoEscolhido = escolherTipoTexto(input, traducao);
 
             System.out.println(traducao.getProperty("comandoDigitoTitulo"));
             tituloDigitado = input.nextLine();
@@ -197,37 +176,9 @@ public class GerenciadorOrientacao {
                 }
                 switch (opcaoEditar) {
                     case 1:
-                        String tipoTextoEscolhido = "";
-                        int escolhaTipoTexto;
-                        do {
-                            System.out.println(traducao.getProperty("tipoOrientacao"));
-                            if (input.hasNextInt()) {
-                                escolhaTipoTexto = input.nextInt();
-                                input.nextLine();
-
-                                if (escolhaTipoTexto >= 1 && escolhaTipoTexto <= 5) {
-                                    if (escolhaTipoTexto == 1) {
-                                        tipoTextoEscolhido = traducao.getProperty("tipoManualOperacao");
-                                    } else if (escolhaTipoTexto == 2) {
-                                        tipoTextoEscolhido = traducao.getProperty("tipoProcedimentoSeguranca");
-                                    } else if (escolhaTipoTexto == 3) {
-                                        tipoTextoEscolhido = traducao.getProperty("tipoManutencaoReparo");
-                                    } else if (escolhaTipoTexto == 4) {
-                                        tipoTextoEscolhido = traducao.getProperty("tipoTesteDiagnostico");
-                                    } else {
-                                        tipoTextoEscolhido = traducao.getProperty("tipoCondutaOperacoesSetoriais");
-                                    }
-
-                                    orientacaoEncontrada.setTipo(tipoTextoEscolhido);
-                                    break;
-                                } else {
-                                    System.out.println(traducao.getProperty("numeroInvalido"));
-                                }
-                            } else {
-                                System.out.println("respostaInvalida");
-                                input.nextLine();
-                            }
-                        } while (true);
+                        System.out.println(traducao.getProperty("tipoOrientacao"));
+                        String tipoTextoEscolhido = escolherTipoTexto(input, traducao);
+                        orientacaoEncontrada.setTipo(tipoTextoEscolhido);
                         break;
 
                     case 2:
@@ -363,5 +314,38 @@ public class GerenciadorOrientacao {
         System.out.println(traducao.getProperty("conteudo") + orientacaoEncontrada.getConteudo());
         System.out.println(traducao.getProperty("tipo") + orientacaoEncontrada.getTipo());
         System.out.println("----------------------------------------------");
+    }
+
+    private String escolherTipoTexto(Scanner input, Tradutor traducao){
+        String tipoTextoEscolhido = "";
+        int escolhaTipoTexto;
+        do {
+            if (input.hasNextInt()) {
+                escolhaTipoTexto = input.nextInt();
+                input.nextLine();
+
+                if (escolhaTipoTexto >= 1 && escolhaTipoTexto <= 5) {
+                    if (escolhaTipoTexto == 1) {
+                        tipoTextoEscolhido = traducao.getProperty("tipoManualOperacao");
+                    } else if (escolhaTipoTexto == 2) {
+                        tipoTextoEscolhido = traducao.getProperty("tipoProcedimentoSeguranca");
+                    } else if (escolhaTipoTexto == 3) {
+                        tipoTextoEscolhido = traducao.getProperty("tipoManutencaoReparo");
+                    } else if (escolhaTipoTexto == 4) {
+                        tipoTextoEscolhido = traducao.getProperty("tipoTesteDiagnostico");
+                    } else {
+                        tipoTextoEscolhido = traducao.getProperty("tipoCondutaOperacoesSetoriais");
+                    }
+                    break;
+                } else {
+                    System.out.println(traducao.getProperty("numeroInvalido"));
+                }
+            } else {
+                System.out.println("respostaInvalida");
+                input.nextLine();
+            }
+        } while (true);
+
+        return tipoTextoEscolhido;
     }
 }
