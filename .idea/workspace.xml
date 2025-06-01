@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="68fb245b-1ccb-4b6c-b047-5871346459d6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/projetoFinal/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/projetoFinal/Principal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/projetoFinal/documents_de.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/projetoFinal/documents_de.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/projetoFinal/documents_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/projetoFinal/documents_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/projetoFinal/documents_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/projetoFinal/documents_es.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/projetoFinal/documents_pt.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/projetoFinal/documents_pt.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetoFinal/GerenciadorOrientacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetoFinal/GerenciadorOrientacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetoFinal/documents_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetoFinal/documents_en.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Unnamed.executor": "Run",
+    "git-widget-placeholder": "feat/funcao-editar"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="projetoFinal.Principal" />
+      <module name="WegOne" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/WegOne$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1748799739700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+  </component>
+</project>
