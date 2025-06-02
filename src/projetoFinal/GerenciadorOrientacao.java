@@ -340,7 +340,11 @@ public class GerenciadorOrientacao {
             input.nextLine();
             return variavel;
         } else {
-            System.out.println(traducao.getProperty("respostaInvalida"));
+            if (traducao != null) {
+                System.out.println(traducao.getProperty(mensagem));
+            } else {
+                System.out.println(mensagem);
+            }
             input.nextLine();
             return 0;
         }
