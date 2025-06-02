@@ -20,55 +20,73 @@ Dentro do sistema,a versão do Java JDK é muito importante para fluidez do proj
 * Recomenda-se que o Visual Studio Code esteja de acordo com a versão mais recente, a fim de garantir mais estabilidade e compatibilidade do código, e a extensão **"Extension Pack for Java"**.
 * Recomenda-se que a IDE Eclipse também esteja na última versão, devido aos mesmos motivos citados acerca do Visual Studio Code.
 * Recomenda-se que a versão do Java Development Kit seja, no mínimo, o JDK 17. A fim de possibilitar a funcionalidade do código dentro do terminal.
-  
-## 🚀 Passo a Passo para Clonar um Repositório
-### 🔗 1. Copiar a URL do Repositório
-- Vá até o repositório no GitHub, GitLab, Bitbucket, etc.
-- Clique no botão **"Code"** (ou similar)
-- Copie a URL no formato **HTTPS** ou **SSH**
-Exemplo de URL HTTPS:
-```
-https://github.com/usuario/nome-do-repositorio.git
-```
----
-### 🖥️ 2. Abrir o Terminal da IDE
-Abra o terminal embutido da sua IDE ou use um terminal externo.
-* VS Code: `Ctrl + '`  
-* IntelliJ: `View > Tool Windows > Terminal`
-* Eclipse:  
-  I. Vá em `Window > Show View > Other...`  
-  II. Procure por `Terminal` e clique em `OK`  
-  III. A aba do terminal aparecerá (pode ser necessário instalar o plugin "TM Terminal" se não estiver disponível)
 
----
+## 🚀 Clonando o Repositório `WegOne`
 
-### 📁 3. Escolher a Pasta Onde o Repositório Será Clonado
+### 1. Copie a URL
 
-Navegue até o diretório onde você quer salvar o projeto:
+Acesse:
+`https://github.com/HugoDeleonP/WegOne.git`
+
+### 2. Abra o terminal
+
+Use o terminal da sua IDE ou um terminal externo.
+
+### 3. Navegue até a pasta desejada
+
 ```bash
 cd caminho/onde/quer/clonar
 ```
----
-### 📦 4. Clonar o Repositório
-Use o comando `git clone` seguido da URL copiada:
+
+### 4. Clone o repositório
+
 ```bash
 git clone https://github.com/HugoDeleonP/WegOne.git
 ```
----
-### 📂 5. Acessar a Pasta do Projeto Clonado
-Depois de clonar, entre na pasta do projeto:
+
+### 5. Acesse o diretório clonado
+
 ```bash
 cd WegOne
 ```
----
-### ✅ Pronto!
-Agora você tem uma cópia local completa do repositório e pode começar a trabalhar com ele!  
-Você pode usar os comandos `git status`, `git add`, `git commit`, etc., normalmente.
+
+✅ Pronto! Agora você pode fazer uso do projeto.
 
 ---
 ## 🪖 Integrantes
-* Catarina Klein- *Product Owner* -[Catarina0830](https://github.com/Catarina0830)
-* Eduardo Dias da Maia- *Dev* -[EduardoDias1902](https://github.com/EduardoDias1902)
-* Hugo Deleon Giminiani de Souza Paim- *Scrum Master* -[Hugo Deleon](https://github.com/GeminusDeFluminensis)
-* Matheus Alexandre de Castro-*Dev*-[Matheus089107](https://github.com/Matheus089107)
-
+<table>
+  <thead>
+    <tr>
+      <th>Foto</th>
+      <th>Nome</th>
+      <th>Função</th>
+      <th>GitHub</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://github.com/Catarina0830.png" width="80" /></td>
+      <td>Catarina Klein</td>
+      <td>Product Owner</td>
+      <td><a href="https://github.com/Catarina0830">@Catarina0830</a></td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/EduardoDias1902.png" width="80" /></td>
+      <td>Eduardo Dias da Maia</td>
+      <td>Dev</td>
+      <td><a href="https://github.com/EduardoDias1902">@EduardoDias1902</a></td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/HugoDeleonP.png" width="80" /></td>
+      <td>Hugo Deleon G. de Souza Paim</td>
+      <td>Scrum Master</td>
+      <td><a href="https://github.com/HugoDeleonP">@HugoDeleonP</a></td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/Matheus089107.png" width="80" /></td>
+      <td>Matheus Alexandre de Castro</td>
+      <td>Dev</td>
+      <td><a href="https://github.com/Matheus089107">@Matheus089107</a></td>
+    </tr>
+  </tbody>
+</table>
