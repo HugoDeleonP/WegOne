@@ -18,23 +18,36 @@ public class TituloOrientacaoDAO {
         }
     }
 
-    public static void createTitulo(){
-        try(Connection conn = ConnectionDB.getConnection()) {
-            String sql = "INSERT INTO TituloOrientacao (id) VALUES (?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+    public static int createTitulo(){
+        int idGerado = -1;
+        try (Connection conn = ConnectionDB.getConnection()) {
+            String sql = "INSERT INTO TituloOrientacao DEFAULT VALUES";
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.executeUpdate();
 
-            System.out.println("ID adicionado com sucesso!");
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                idGerado = rs.getInt(1);
+                System.out.println("Título criado com ID: " + idGerado);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return idGerado;
+
     }
 
-    public static void deleteTitulo(){
+    public static void deleteTitulo(Scanner input){
         try (Connection conn = ConnectionDB.getConnection()){
+            System.out.println("Digite o ID da orientação para deletar:");
+            int id = input.nextInt();
+            input.nextLine();
+
             String sql = "DELETE FROM TituloOrientacao WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
 
-            executeUpdateMessage(stmt);
+            executeUpdateMessage(stmt, "Deletado com sucesso", "ID ausente");
         } catch (Exception e) {
             e.printStackTrace();
         }

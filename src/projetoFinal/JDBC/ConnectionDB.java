@@ -16,14 +16,14 @@ public class ConnectionDB {
 
     }
 
-    public static void executeUpdateMessage(PreparedStatement stmt) throws SQLException {
+    public static void executeUpdateMessage(PreparedStatement stmt, String sucessMsg, String errorMsg) throws SQLException {
         int rowsAffected = stmt.executeUpdate();
 
         if (rowsAffected > 0){
-            System.out.println("Retirado com sucesso");
+            System.out.println(sucessMsg);
         }
         else{
-            System.out.println("ID ausente");
+            System.out.println(errorMsg);
         }
     }
 }
