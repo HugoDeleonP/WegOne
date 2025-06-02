@@ -1,9 +1,13 @@
 package projetoFinal.JDBC;
+
+import projetoFinal.JDBC.*;
 import java.sql.*;
 import java.util.Scanner;
+import projetoFinal.*;
+import static projetoFinal.JDBC.ConnectionDB.executeUpdateMessage;
 
 public class IdiomaDAO {
-    public static void readIdiomas(){
+    public static void readIdioma(){
         try(Connection conn = ConnectionDB.getConnection()) {
             String sql = "SELECT * FROM IdiomaOrientacao";
             Statement stmt = conn.createStatement();
@@ -27,16 +31,7 @@ public class IdiomaDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, idioma);
 
-            System.out.println("Idioma adicionado com sucesso!");
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void updateIdioma(Scanner input) {
-        try(Connection conn = ConnectionDB.getConnection()){
-
-        }catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -50,14 +45,7 @@ public class IdiomaDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
 
-            int rowsAffected = stmt.executeUpdate();
-
-            if (rowsAffected > 0){
-                System.out.println("Idioma excluído com sucesso!");
-            }
-            else{
-                System.out.println("ID não encontrado");
-            }
+            executeUpdateMessage(stmt);
         } catch (Exception e) {
             e.printStackTrace();
         }

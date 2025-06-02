@@ -1,7 +1,6 @@
 package projetoFinal.JDBC;
-import java.sql.SQLException;
-import java.sql.DriverManager;
-import java.sql.Connection;
+import java.sql.*;
+import projetoFinal.*;
 
 public class ConnectionDB {
     private static final String URL = "jdbc:mysql://root:beQwLQrVagQlJWUjWkSvIMrrTtOhiXuW@ballast.proxy.rlwy.net:43059/railway";
@@ -15,5 +14,16 @@ public class ConnectionDB {
             throw new RuntimeException("Erro ao conectar com o banco de dados", e);
         }
 
+    }
+
+    public static void executeUpdateMessage(PreparedStatement stmt) throws SQLException {
+        int rowsAffected = stmt.executeUpdate();
+
+        if (rowsAffected > 0){
+            System.out.println("Retirado com sucesso");
+        }
+        else{
+            System.out.println("ID ausente");
+        }
     }
 }
