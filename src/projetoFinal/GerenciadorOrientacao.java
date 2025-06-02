@@ -63,8 +63,7 @@ public class GerenciadorOrientacao {
 
         do {
             System.out.println(traducao.getProperty("perguntaPesquisaTipo"));
-            int opcao = input.nextInt();
-            input.nextLine();
+            int opcao = lerInteiro(input, traducao, "respostaInvalida");
 
             boolean encontrado = false;
             switch (opcao) {
@@ -106,7 +105,7 @@ public class GerenciadorOrientacao {
                     break;
 
                 default:
-                    System.out.println(traducao.getProperty("respostaInvalida"));
+                    System.out.println(traducao.getProperty("numeroInvalido"));
                     break;
             }
             do {
