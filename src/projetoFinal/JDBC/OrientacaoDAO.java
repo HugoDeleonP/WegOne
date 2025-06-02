@@ -1,72 +1,102 @@
 package projetoFinal.JDBC;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
-
+import projetoFinal.*;
 import static projetoFinal.JDBC.ConnectionDB.executeUpdateMessage;
 
 public class OrientacaoDAO {
-    public static void readOrientacao() {
-        try (Connection conn = ConnectionDB.getConnection()) {
-            String sql = "SELECT " +
-                    "orientacao.id AS orientacao_id, " +
-                    "tit.titulo AS titulo_orientacao, " +
-                    "cont.conteudo AS conteudo_orientacao, " +
-                    "tt.nome_exibicao AS tipo_orientacao " +
-                    "FROM Orientacao o " +
-                    "JOIN TituloTraducao tit ON o.id_titulo = tit.id_titulo " +
-                    "JOIN ConteudoTraducao cont ON o.id_conteudo = cont.id_conteudo " +
-                    "JOIN TipoTraducao tt ON o.id_tipo = tt.id_tipo " +
-                    "JOIN IdiomaOrientacao io ON tit.id_idioma = io.id " +
-                    "                       AND cont.id_idioma = io.id " +
-                    "                       AND tt.id_idioma = io.id " +
-                    "WHERE io.nome = ? AND o.id = ?";
 
+    public static void readOrientacao(){
+        try (Connection conn = ConnectionDB.getConnection()) {
+            String sql = "SELECT * FROM Orientacao";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                System.out.println("Orientação ID: " + rs.getInt("id"));
-                System.out.println("Tipo: " + rs.getString("id_tipo"));
-                System.out.println("Título ID: " + rs.getInt("id_titulo"));
-                System.out.println("Conteúdo ID: " + rs.getInt("id_conteudo"));
+                System.out.println("ID: " + rs.getInt("id"));
+                System.out.println("ID Tipo: " + rs.getInt("id_tipo"));
+                System.out.println("ID Título: " + rs.getInt("id_titulo"));
+                System.out.println("ID Conteúdo: " + rs.getInt("id_conteudo"));
+                System.out.println("-----------------------");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static int createOrientacao(Scanner input) {
+    public static void readOrientacaoCompleta(Scanner input, int idIdioma){
+        try (Connection conn = ConnectionDB.getConnection()) {
+            String sql = """
+                SELECT o.id,
+                       t.id AS tipo_id,
+                       ti.id AS titulo_id,
+                       c.id AS conteudo_id,
+                       tt.nome_exibicao AS tipo_traduzido,
+                       ttr.titulo AS titulo_traduzido,
+                       ct.conteudo AS conteudo_traduzido
+                FROM Orientacao o
+                JOIN TipoOrientacao t ON o.id_tipo = t.id
+                JOIN TituloOrientacao ti ON o.id_titulo = ti.id
+                JOIN ConteudoOrientacao c ON o.id_conteudo = c.id
+                LEFT JOIN TipoTraducao tt ON tt.id_tipo = t.id AND tt.id_idioma = ?
+                LEFT JOIN TituloTraducao ttr ON ttr.id_titulo = ti.id AND ttr.id_idioma = ?
+                LEFT JOIN ConteudoTraducao ct ON ct.id_conteudo = c.id AND ct.id_idioma = ?
+            """;
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idIdioma);
+            stmt.setInt(2, idIdioma);
+            stmt.setInt(3, idIdioma);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                System.out.println("Orientação ID: " + rs.getInt("id"));
+                System.out.println("Tipo: " + rs.getString("tipo_traduzido"));
+                System.out.println("Título: " + rs.getString("titulo_traduzido"));
+                System.out.println("Conteúdo: " + rs.getString("conteudo_traduzido"));
+                System.out.println("----------------------");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static int createOrientacao(Scanner input){
         int idGerado = -1;
         try (Connection conn = ConnectionDB.getConnection()) {
-            System.out.println("Nome: ");
-            String nome = input.nextLine();
+            System.out.println("Digite o ID do Tipo:");
+            int idTipo = input.nextInt();
+            System.out.println("Digite o ID do Título:");
+            int idTitulo = input.nextInt();
+            System.out.println("Digite o ID do Conteúdo:");
+            int idConteudo = input.nextInt();
+            input.nextLine(); // limpar buffer
 
-            String sql = "INSERT INTO Orientacao(nome) VALUES (?)";
+            String sql = "INSERT INTO Orientacao (id_tipo, id_titulo, id_conteudo) VALUES (?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, nome);
+            stmt.setInt(1, idTipo);
+            stmt.setInt(2, idTitulo);
+            stmt.setInt(3, idConteudo);
+
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
                 idGerado = rs.getInt(1);
-                System.out.println("Título criado com ID: " + idGerado);
+                System.out.println("Orientação criada com ID: " + idGerado);
             }
-
-            System.out.println("Nome adicionado com sucesso!");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return idGerado;
     }
 
-    public static void deleteOrientacao(Scanner input) {
+    public static void deleteOrientacao(Scanner input){
         try (Connection conn = ConnectionDB.getConnection()) {
             System.out.println("Digite o ID da orientação para deletar:");
             int id = input.nextInt();
+            input.nextLine();
 
             String sql = "DELETE FROM Orientacao WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -77,7 +107,4 @@ public class OrientacaoDAO {
             e.printStackTrace();
         }
     }
-
 }
-
-

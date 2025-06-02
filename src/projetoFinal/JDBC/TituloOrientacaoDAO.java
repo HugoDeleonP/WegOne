@@ -1,16 +1,19 @@
 package projetoFinal.JDBC;
+
 import java.sql.*;
 import java.util.Scanner;
+
 import projetoFinal.*;
+
 import static projetoFinal.JDBC.ConnectionDB.executeUpdateMessage;
 
 public class TituloOrientacaoDAO {
-    public static void readTitulo(){
-        try(Connection conn = ConnectionDB.getConnection()){
+    public static void readTitulo() {
+        try (Connection conn = ConnectionDB.getConnection()) {
             String sql = "SELECT * FROM TituloOrientacao";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 System.out.println("ID: " + rs.getInt("id"));
             }
         } catch (Exception e) {
@@ -18,7 +21,7 @@ public class TituloOrientacaoDAO {
         }
     }
 
-    public static int createTitulo(){
+    public static int createTitulo() {
         int idGerado = -1;
         try (Connection conn = ConnectionDB.getConnection()) {
             String sql = "INSERT INTO TituloOrientacao DEFAULT VALUES";
@@ -37,8 +40,8 @@ public class TituloOrientacaoDAO {
 
     }
 
-    public static void deleteTitulo(Scanner input){
-        try (Connection conn = ConnectionDB.getConnection()){
+    public static void deleteTitulo(Scanner input) {
+        try (Connection conn = ConnectionDB.getConnection()) {
             System.out.println("Digite o ID da orientação para deletar:");
             int id = input.nextInt();
             input.nextLine();
