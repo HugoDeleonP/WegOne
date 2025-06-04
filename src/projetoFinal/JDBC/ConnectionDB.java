@@ -1,6 +1,8 @@
 package projetoFinal.JDBC;
-import java.sql.*;
-import projetoFinal.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class ConnectionDB {
     private static final String URL = "jdbc:mysql://ballast.proxy.rlwy.net:43059/railway";
@@ -10,6 +12,7 @@ public class ConnectionDB {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException("Erro ao conectar com o banco de dados", e);
         }
