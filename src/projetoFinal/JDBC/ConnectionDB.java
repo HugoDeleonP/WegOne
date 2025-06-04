@@ -3,7 +3,7 @@ import java.sql.*;
 import projetoFinal.*;
 
 public class ConnectionDB {
-    private static final String URL = "jdbc:mysql://root:beQwLQrVagQlJWUjWkSvIMrrTtOhiXuW@ballast.proxy.rlwy.net:43059/railway";
+    private static final String URL = "jdbc:mysql://ballast.proxy.rlwy.net:43059/railway";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "beQwLQrVagQlJWUjWkSvIMrrTtOhiXuW";
     public static Connection getConnection(){
