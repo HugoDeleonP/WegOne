@@ -25,11 +25,15 @@ public class Principal {
 		String idioma = null;
 		int lingua;
 		do {
-			
-			System.out.println("	PT-BR----Antes de começar,adicione seu idioma!(1)(escolha o número representante dessa língua)");
-			System.out.println("	ES-------¡Antes de empezar, añade tu idioma!(2)(Elige el número que representa este idioma.)");
-			System.out.println("	EN-USA---Before you start, add your language!(3)(Choose the number that represents this language.)");
-			System.out.println("	DIE------Bevor Sie beginnen, fügen Sie Ihre Sprache hinzu!(4)(Wähle die Zahl, die diese Sprache repräsentiert.)");
+            System.out.println("-----------------------------------------------------------------------------------");
+            System.out.println("| Código  | Idioma            | Mensagem em Língua Nativa                         |");
+            System.out.println("-----------------------------------------------------------------------------------");
+            System.out.println("| 1       | Português (PT-BR) | Antes de começar, adicione seu idioma!            |");
+            System.out.println("| 2       | Español (ES)      | ¡Antes de empezar, añade tu idioma!               |");
+            System.out.println("| 3       | English (EN-USA)  | Before you start, add your language!              |");
+            System.out.println("| 4       | Deutsch (DE)      | Bevor Sie beginnen, fügen Sie Ihre Sprache hinzu! |");
+            System.out.println("-----------------------------------------------------------------------------------");
+            System.out.print("Digite o número do seu idioma: ");
 			lingua=input.nextInt();
 
 		
