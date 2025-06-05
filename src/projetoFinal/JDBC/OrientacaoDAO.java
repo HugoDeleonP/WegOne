@@ -26,22 +26,7 @@ public class OrientacaoDAO {
 
     public static void readOrientacaoCompleta(Scanner input, int idIdioma){
         try (Connection conn = ConnectionDB.getConnection()) {
-            String sql = """
-                SELECT o.id,
-                       t.id AS tipo_id,
-                       ti.id AS titulo_id,
-                       c.id AS conteudo_id,
-                       tt.nome_exibicao AS tipo_traduzido,
-                       ttr.titulo AS titulo_traduzido,
-                       ct.conteudo AS conteudo_traduzido
-                FROM Orientacao o
-                JOIN TipoOrientacao t ON o.id_tipo = t.id
-                JOIN TituloOrientacao ti ON o.id_titulo = ti.id
-                JOIN ConteudoOrientacao c ON o.id_conteudo = c.id
-                LEFT JOIN TipoTraducao tt ON tt.id_tipo = t.id AND tt.id_idioma = ?
-                LEFT JOIN TituloTraducao ttr ON ttr.id_titulo = ti.id AND ttr.id_idioma = ?
-                LEFT JOIN ConteudoTraducao ct ON ct.id_conteudo = c.id AND ct.id_idioma = ?
-            """;
+            String sql = "SELECT * FROM Orientacoes";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idIdioma);
