@@ -48,7 +48,7 @@ public class OrientacaoDAO {
     }
 
     public static int createOrientacao(Scanner input){
-        int idGerado = -1;
+        int idGerado = 0;
         try (Connection conn = ConnectionDB.getConnection()) {
             System.out.println("Digite o ID do Tipo:");
             int idTipo = input.nextInt();

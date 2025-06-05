@@ -9,7 +9,7 @@ import static projetoFinal.JDBC.ConnectionDB.executeUpdateMessage;
 public class IdiomaDAO {
     public static void readIdioma(){
         try(Connection conn = ConnectionDB.getConnection()) {
-            String sql = "SELECT * FROM IdiomaOrientacao";
+            String sql = "SELECT * FROM IdiomaOrientacao ORDER BY id";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -23,7 +23,7 @@ public class IdiomaDAO {
     }
 
     public static int createIdioma(Scanner input){
-        int idGerado = -1;
+        int idGerado = 0;
         try(Connection conn = ConnectionDB.getConnection()){
             System.out.println("Idioma: ");
             String idioma = input.nextLine();

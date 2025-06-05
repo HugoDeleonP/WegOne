@@ -21,7 +21,7 @@ public class TipoOrientacaoDAO {
     }
 
     public static int createTipo(Scanner input){
-        int idGerado = -1;
+        int idGerado = 0;
         try(Connection conn = ConnectionDB.getConnection()) {
             System.out.println("Nome: ");
             String nome = input.nextLine();

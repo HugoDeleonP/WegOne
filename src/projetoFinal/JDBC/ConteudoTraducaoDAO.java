@@ -25,7 +25,7 @@ public class ConteudoTraducaoDAO {
     }
 
     public static int createConteudoTraducao(Scanner input) {
-        int idGerado = -1;
+        int idGerado = 0;
         try (Connection conn = ConnectionDB.getConnection()) {
             System.out.println("ID do Conteúdo:");
             int idConteudo = input.nextInt();

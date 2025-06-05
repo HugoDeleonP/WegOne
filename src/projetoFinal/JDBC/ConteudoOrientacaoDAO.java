@@ -19,7 +19,7 @@ public class ConteudoOrientacaoDAO {
     }
 
     public static int createConteudo(){
-        int idGerado = -1;
+        int idGerado = 0;
         try (Connection conn = ConnectionDB.getConnection()) {
             String sql = "INSERT INTO ConteudoOrientacao DEFAULT VALUES";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
