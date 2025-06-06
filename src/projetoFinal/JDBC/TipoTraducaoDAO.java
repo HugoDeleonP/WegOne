@@ -1,12 +1,14 @@
 package projetoFinal.JDBC;
 
+import projetoFinal.Tradutor;
+
 import java.sql.*;
 import java.util.Scanner;
 import static projetoFinal.JDBC.ConnectionDB.executeUpdateMessage;
 
 public class TipoTraducaoDAO {
 
-    public static void readTipoTraducao() {
+    public static void readTipoTraducao(Tradutor traducao) {
         try (Connection conn = ConnectionDB.getConnection()) {
             String sql = "SELECT * FROM TipoTraducao";
             Statement stmt = conn.createStatement();
@@ -14,9 +16,9 @@ public class TipoTraducaoDAO {
 
             while (rs.next()) {
                 System.out.println("ID: " + rs.getInt("id"));
-                System.out.println("ID Tipo: " + rs.getInt("id_tipo"));
-                System.out.println("ID Idioma: " + rs.getInt("id_idioma"));
-                System.out.println("Nome Exibição: " + rs.getString("tipo"));
+                System.out.println(traducao.getProperty("campo.id.tipo") + rs.getInt("id_tipo"));
+                System.out.println(traducao.getProperty("campo.id.idioma") + rs.getInt("id_idioma"));
+                System.out.println(traducao.getProperty("campo.tipo") + rs.getString("tipo"));
                 System.out.println("---------------");
             }
         } catch (Exception e) {
@@ -24,18 +26,18 @@ public class TipoTraducaoDAO {
         }
     }
 
-    public static int createTipoTraducao(Scanner input) {
+    public static int createTipoTraducao(Scanner input, Tradutor traducao) {
         int idGerado = -1;
         try (Connection conn = ConnectionDB.getConnection()) {
-            System.out.println("ID do Tipo:");
+            System.out.println(traducao.getProperty("campo.id.tipo"));
             int idTipo = input.nextInt();
             input.nextLine();
 
-            System.out.println("ID do Idioma:");
+            System.out.println(traducao.getProperty("campo.id.idioma"));
             int idIdioma = input.nextInt();
             input.nextLine();
 
-            System.out.println("Nome de Exibição:");
+            System.out.println(traducao.getProperty("campo.nome.exibicao"));
             String nomeExibicao = input.nextLine();
 
             String sql = "INSERT INTO TipoTraducao (id_tipo, id_idioma, nome_exibicao) VALUES (?, ?, ?)";
@@ -49,19 +51,19 @@ public class TipoTraducaoDAO {
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
                 idGerado = rs.getInt(1);
-                System.out.println("TipoTraducao criado com ID: " + idGerado);
+                System.out.println(traducao.getProperty("criado.tipotraducao") + idGerado);
             }
 
-            System.out.println("TipoTraducao adicionado com sucesso!");
+            System.out.println(traducao.getProperty("mensagem.sucesso"));;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return idGerado;
     }
 
-    public static void deleteTipoTraducao(Scanner input) {
+    public static void deleteTipoTraducao(Scanner input, Tradutor traducao) {
         try (Connection conn = ConnectionDB.getConnection()) {
-            System.out.println("Digite o ID do TipoTraducao para deletar:");
+            System.out.println(traducao.getProperty("entrada.id.tipotraducao"));
             int id = input.nextInt();
             input.nextLine();
 
@@ -69,7 +71,7 @@ public class TipoTraducaoDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
 
-            executeUpdateMessage(stmt, "Deletado com sucesso", "ID ausente");
+            executeUpdateMessage(stmt, traducao.getProperty("mensagem.deletado"), traducao.getProperty("mensagem.id.ausente"));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,14 +7,14 @@ import projetoFinal.*;
 import static projetoFinal.JDBC.ConnectionDB.executeUpdateMessage;
 
 public class IdiomaDAO {
-    public static void readIdioma(){
+    public static void readIdioma(Tradutor traducao){
         try(Connection conn = ConnectionDB.getConnection()) {
             String sql = "SELECT * FROM IdiomaOrientacao ORDER BY id";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 System.out.println("ID: " + rs.getInt("id"));
-                System.out.println("Idioma: " + rs.getString("nome"));
+                System.out.println(traducao.getProperty("campo.idioma") + rs.getString("nome"));
             }
 
         }catch(Exception e){
@@ -22,10 +22,10 @@ public class IdiomaDAO {
         }
     }
 
-    public static int createIdioma(Scanner input){
+    public static int createIdioma(Scanner input, Tradutor traducao){
         int idGerado = 0;
         try(Connection conn = ConnectionDB.getConnection()){
-            System.out.println("Idioma: ");
+            System.out.println(traducao.getProperty("campo.idioma"));
             String idioma = input.nextLine();
 
             String sql = "INSERT INTO IdiomaOrientacao (nome) VALUES (?)";
@@ -36,10 +36,10 @@ public class IdiomaDAO {
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
                 idGerado = rs.getInt(1);
-                System.out.println("Idioma criado com ID: " + idGerado);
+                System.out.println(traducao.getProperty("criado.idioma") + idGerado);
             }
 
-            System.out.println("Idioma adicionado com sucesso!");
+            System.out.println(traducao.getProperty("mensagem.sucesso"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,9 +47,9 @@ public class IdiomaDAO {
         return idGerado;
     }
 
-    public static void deleteIdioma(Scanner input){
+    public static void deleteIdioma(Scanner input, Tradutor traducao){
         try(Connection conn = ConnectionDB.getConnection()) {
-            System.out.println("Digite o ID da orientação para deletar:");
+            System.out.println(traducao.getProperty("entrada.id.idioma"));
             int id = input.nextInt();
             input.nextLine();
 
@@ -57,7 +57,7 @@ public class IdiomaDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
 
-            executeUpdateMessage(stmt, "Deletado com sucesso", "ID ausente");
+            executeUpdateMessage(stmt, traducao.getProperty("mensagem.deletado"), traducao.getProperty("mensagem.id.ausente"));
         } catch (Exception e) {
             e.printStackTrace();
         }

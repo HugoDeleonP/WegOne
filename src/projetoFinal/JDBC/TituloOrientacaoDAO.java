@@ -21,7 +21,7 @@ public class TituloOrientacaoDAO {
         }
     }
 
-    public static int createTitulo() {
+    public static int createTitulo(Tradutor traducao) {
         int idGerado = 0;
         try (Connection conn = ConnectionDB.getConnection()) {
             String sql = "INSERT INTO TituloOrientacao DEFAULT VALUES";
@@ -31,8 +31,10 @@ public class TituloOrientacaoDAO {
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
                 idGerado = rs.getInt(1);
-                System.out.println("Título criado com ID: " + idGerado);
+                System.out.println(traducao.getProperty("criado.titulo") + idGerado);
             }
+
+            System.out.println(traducao.getProperty("mensagem.sucesso"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,9 +42,9 @@ public class TituloOrientacaoDAO {
 
     }
 
-    public static void deleteTitulo(Scanner input) {
+    public static void deleteTitulo(Scanner input, Tradutor traducao) {
         try (Connection conn = ConnectionDB.getConnection()) {
-            System.out.println("Digite o ID da orientação para deletar:");
+            System.out.println(traducao.getProperty("entrada.id.titulo"));
             int id = input.nextInt();
             input.nextLine();
 
@@ -50,7 +52,7 @@ public class TituloOrientacaoDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
 
-            executeUpdateMessage(stmt, "Deletado com sucesso", "ID ausente");
+            executeUpdateMessage(stmt, traducao.getProperty("mensagem.deletado"), traducao.getProperty("mensagem.id.ausente"));
         } catch (Exception e) {
             e.printStackTrace();
         }

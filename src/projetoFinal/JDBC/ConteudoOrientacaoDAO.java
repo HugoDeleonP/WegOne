@@ -18,7 +18,7 @@ public class ConteudoOrientacaoDAO {
         }
     }
 
-    public static int createConteudo(){
+    public static int createConteudo(Tradutor traducao){
         int idGerado = 0;
         try (Connection conn = ConnectionDB.getConnection()) {
             String sql = "INSERT INTO ConteudoOrientacao DEFAULT VALUES";
@@ -28,7 +28,7 @@ public class ConteudoOrientacaoDAO {
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
                 idGerado = rs.getInt(1);
-                System.out.println("Conteúdo criado com ID: " + idGerado);
+                System.out.println(traducao.getProperty("mensagem.criado") + idGerado);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,9 +37,9 @@ public class ConteudoOrientacaoDAO {
 
     }
 
-    public static void deleteConteudo(Scanner input){
+    public static void deleteConteudo(Tradutor traducao, Scanner input){
         try (Connection conn = ConnectionDB.getConnection()){
-            System.out.println("Digite o ID da orientação para deletar:");
+            System.out.println(traducao.getProperty("entrada.id.conteudo"));
             int id = input.nextInt();
             input.nextLine();
 
@@ -47,7 +47,7 @@ public class ConteudoOrientacaoDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
 
-            executeUpdateMessage(stmt, "Deletado com sucesso", "ID ausente");
+            executeUpdateMessage(stmt, traducao.getProperty("mensagem.deletado"), traducao.getProperty("mensagem.id.ausente"));
         } catch (Exception e) {
             e.printStackTrace();
         }

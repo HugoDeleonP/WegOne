@@ -7,16 +7,16 @@ import static projetoFinal.JDBC.ConnectionDB.executeUpdateMessage;
 
 public class OrientacaoDAO {
 
-    public static void readOrientacao(){
+    public static void readOrientacao(Tradutor traducao){
         try (Connection conn = ConnectionDB.getConnection()) {
             String sql = "SELECT * FROM Orientacao";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                System.out.println("ID: " + rs.getInt("id"));
-                System.out.println("ID Tipo: " + rs.getInt("id_tipo"));
-                System.out.println("ID Título: " + rs.getInt("id_titulo"));
-                System.out.println("ID Conteúdo: " + rs.getInt("id_conteudo"));
+                System.out.println(traducao.getProperty("campo.orientacao") + rs.getInt("id"));
+                System.out.println(traducao.getProperty("campo.id.tipo") + rs.getInt("id_tipo"));
+                System.out.println(traducao.getProperty("campo.id.titulo") + rs.getInt("id_titulo"));
+                System.out.println(traducao.getProperty("campo.id.conteudo") + rs.getInt("id_conteudo"));
                 System.out.println("-----------------------");
             }
         } catch (Exception e) {
@@ -24,7 +24,7 @@ public class OrientacaoDAO {
         }
     }
 
-    public static void readOrientacaoCompleta(Scanner input, int idIdioma){
+    public static void readOrientacaoCompleta(Scanner input, int idIdioma, Tradutor traducao){
         try (Connection conn = ConnectionDB.getConnection()) {
             String sql = "SELECT * FROM Orientacoes";
 
@@ -35,10 +35,10 @@ public class OrientacaoDAO {
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                System.out.println("Orientação ID: " + rs.getInt("id"));
-                System.out.println("Tipo: " + rs.getString("tipo_traduzido"));
-                System.out.println("Título: " + rs.getString("titulo_traduzido"));
-                System.out.println("Conteúdo: " + rs.getString("conteudo_traduzido"));
+                System.out.println(traducao.getProperty("campo.orientacao") + rs.getInt("id"));
+                System.out.println(traducao.getProperty("campo.tipo") + rs.getString("tipo_traduzido"));
+                System.out.println(traducao.getProperty("campo.titulo") + rs.getString("titulo_traduzido"));
+                System.out.println(traducao.getProperty("campo.conteudo") + rs.getString("conteudo_traduzido"));
                 System.out.println("----------------------");
             }
         } catch (Exception e) {
@@ -47,16 +47,16 @@ public class OrientacaoDAO {
 
     }
 
-    public static int createOrientacao(Scanner input){
+    public static int createOrientacao(Scanner input, Tradutor traducao){
         int idGerado = 0;
         try (Connection conn = ConnectionDB.getConnection()) {
-            System.out.println("Digite o ID do Tipo:");
+            System.out.println(traducao.getProperty("entrada.id.tipo"));
             int idTipo = input.nextInt();
-            System.out.println("Digite o ID do Título:");
+            System.out.println(traducao.getProperty("entrada.id.titulo"));
             int idTitulo = input.nextInt();
-            System.out.println("Digite o ID do Conteúdo:");
+            System.out.println(traducao.getProperty("entrada.id.conteudo"));
             int idConteudo = input.nextInt();
-            input.nextLine(); // limpar buffer
+            input.nextLine();
 
             String sql = "INSERT INTO Orientacao (id_tipo, id_titulo, id_conteudo) VALUES (?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -69,17 +69,19 @@ public class OrientacaoDAO {
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
                 idGerado = rs.getInt(1);
-                System.out.println("Orientação criada com ID: " + idGerado);
+                System.out.println(traducao.getProperty("criado.orientacao") + idGerado);
             }
+
+            System.out.println(traducao.getProperty("mensagem.sucesso"));
         } catch (Exception e) {
             e.printStackTrace();
         }
         return idGerado;
     }
 
-    public static void deleteOrientacao(Scanner input){
+    public static void deleteOrientacao(Scanner input, Tradutor traducao){
         try (Connection conn = ConnectionDB.getConnection()) {
-            System.out.println("Digite o ID da orientação para deletar:");
+            System.out.println(traducao.getProperty("entrada.id.orientacao"));
             int id = input.nextInt();
             input.nextLine();
 
@@ -87,7 +89,7 @@ public class OrientacaoDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
 
-            executeUpdateMessage(stmt, "Deletado com sucesso", "ID ausente");
+            executeUpdateMessage(stmt, traducao.getProperty("mensagem.deletado"), traducao.getProperty("mensagem.id.ausente"));
         } catch (Exception e) {
             e.printStackTrace();
         }
