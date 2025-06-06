@@ -5,7 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a45002cc-1924-44c9-a7c2-9b611f1464d8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/projetoFinal/OrientacaoDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/projetoFinal/documents_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/projetoFinal/documents_es.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetoFinal/documents_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetoFinal/documents_es.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/.metadata/.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/GerenciadorOrientacao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/ConnectionDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/ConteudoOrientacaoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/ConteudoTraducaoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/GerenciadorDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/IdiomaDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/InterfaceDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/OrientacaoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/TestConnectionDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/TipoOrientacaoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/TipoTraducaoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/TituloOrientacaoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/JDBC/TituloTraducaoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/Orientacao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/Principal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/Tradutor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/documents_de.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/documents_en.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/documents_es.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projetoFinal/documents_pt.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,15 +57,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/java-database&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Principal.executor": "Debug",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/java-database",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="projetoFinal.Principal" />
