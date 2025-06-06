@@ -24,42 +24,6 @@ public class OrientacaoDAO {
         }
     }
 
-    public static void readOrientacaoCompleta(Scanner input, int idIdioma, Tradutor traducao){
-        try (Connection conn = ConnectionDB.getConnection()) {
-            String sql = """
-            SELECT
-                o.id AS id_orientacao,
-                tt.nome_exibicao AS tipo,
-                ttitulo.titulo AS titulo,
-                ct.conteudo AS conteudo
-            FROM Orientacao o
-            JOIN TipoTraducao tt ON tt.id_tipo = o.id_tipo
-            JOIN TituloTraducao ttitulo ON ttitulo.id_titulo = o.id_titulo
-            JOIN ConteudoTraducao ct ON ct.id_conteudo = o.id_conteudo
-            JOIN IdiomaOrientacao idioma ON idioma.id = tt.id_idioma
-            WHERE idioma.nome = ?
-              AND ttitulo.id_idioma = idioma.id
-              AND ct.id_idioma = idioma.id
-        """;
-
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, idIdioma);
-
-
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                System.out.println(traducao.getProperty("campo.orientacao") + rs.getInt("id"));
-                System.out.println(traducao.getProperty("campo.tipo") + rs.getString("tipo_traduzido"));
-                System.out.println(traducao.getProperty("campo.titulo") + rs.getString("titulo_traduzido"));
-                System.out.println(traducao.getProperty("campo.conteudo") + rs.getString("conteudo_traduzido"));
-                System.out.println("----------------------");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
     public static int createOrientacao(Tradutor traducao, int idTipo, int idTitulo, int idConteudo){
         int idGerado = 0;
         try (Connection conn = ConnectionDB.getConnection()) {

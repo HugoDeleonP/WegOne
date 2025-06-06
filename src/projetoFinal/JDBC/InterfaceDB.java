@@ -2,6 +2,7 @@ package projetoFinal.JDBC;
 
 import projetoFinal.GerenciadorOrientacao;
 import projetoFinal.Tradutor;
+import projetoFinal.*;
 
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class InterfaceDB {
 
         Scanner input = new Scanner(System.in);
 
-        GerenciadorDB manager = new GerenciadorDB();
+
 
         System.out.println("┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐");
         System.out.println("│I8,        8        ,8I  88888888888  ,ad8888ba,           ,ad8888ba,                                   │");
@@ -35,8 +36,16 @@ public class InterfaceDB {
             System.out.println("| 4       | Deutsch (DE)      | Bevor Sie beginnen, fügen Sie Ihre Sprache hinzu! |");
             System.out.println("-----------------------------------------------------------------------------------");
             System.out.print("Digite o número do seu idioma: ");
-            lingua=input.nextInt();
 
+
+            while (!input.hasNextInt()) {
+                System.out.println("Por favor, digite um número válido.");
+                input.next(); // limpa a entrada inválida
+                System.out.print("Digite o número do seu idioma: ");
+            }
+
+            lingua=input.nextInt();
+            input.nextLine();
 
             switch(lingua){
 
@@ -62,10 +71,10 @@ public class InterfaceDB {
                     break;
             }
 
-        }while(lingua > 4);
+        }while(idioma == null);
         Tradutor traducao = Tradutor.getInstance(idioma);
 
-
+        GerenciadorDB manager = new GerenciadorDB(input, traducao);
         int escolhaNumero;
         do {
             // Exibe o menu principal
@@ -78,25 +87,24 @@ public class InterfaceDB {
                 case 1:
                     // Cadastrar Orientação
 
-
+                    manager.cadastrarOrientacao();
                     break;
                 case 2:
                     // Pesquisar Orientação
 
-
+                    
                     break;
                 case 3:
                     // Editar Orientação
-
+                    manager.editarOrientacao();
                     break;
                 case 4:
                     // Excluir Orientação
                     System.out.println(traducao.getProperty("listagemTextos"));
-
                     break;
                 case 5:
 
-                    manager.listarOrientacao(input, lingua, traducao);
+                    System.out.println(traducao.getProperty("encerramento"));
                     return;
 
                 default:
