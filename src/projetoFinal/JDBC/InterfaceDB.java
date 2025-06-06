@@ -96,7 +96,7 @@ public class InterfaceDB {
                     break;
                 case 5:
 
-                    System.out.println(traducao.getProperty("encerramento"));
+                    manager.listarOrientacao(input, lingua, traducao);
                     return;
 
                 default:

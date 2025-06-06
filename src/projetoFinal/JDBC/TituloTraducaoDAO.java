@@ -26,19 +26,9 @@ public class TituloTraducaoDAO {
         }
     }
 
-    public static int createTituloTraducao(Scanner input, Tradutor traducao) {
+    public static int createTituloTraducao(Tradutor traducao, int idTitulo, int idIdioma, String titulo) {
         int idGerado = 0;
         try (Connection conn = ConnectionDB.getConnection()) {
-            System.out.println(traducao.getProperty("campo.id.titulo"));
-            int idTitulo = input.nextInt();
-            input.nextLine();
-
-            System.out.println(traducao.getProperty("campo.id.idioma"));
-            int idIdioma = input.nextInt();
-            input.nextLine();
-
-            System.out.println(traducao.getProperty("campo.titulo"));
-            String titulo = input.nextLine();
 
             String sql = "INSERT INTO TituloTraducao (id_titulo, id_idioma, titulo) VALUES (?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

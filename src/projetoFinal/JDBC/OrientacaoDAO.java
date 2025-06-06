@@ -26,12 +26,25 @@ public class OrientacaoDAO {
 
     public static void readOrientacaoCompleta(Scanner input, int idIdioma, Tradutor traducao){
         try (Connection conn = ConnectionDB.getConnection()) {
-            String sql = "SELECT * FROM Orientacoes";
+            String sql = """
+            SELECT
+                o.id AS id_orientacao,
+                tt.nome_exibicao AS tipo,
+                ttitulo.titulo AS titulo,
+                ct.conteudo AS conteudo
+            FROM Orientacao o
+            JOIN TipoTraducao tt ON tt.id_tipo = o.id_tipo
+            JOIN TituloTraducao ttitulo ON ttitulo.id_titulo = o.id_titulo
+            JOIN ConteudoTraducao ct ON ct.id_conteudo = o.id_conteudo
+            JOIN IdiomaOrientacao idioma ON idioma.id = tt.id_idioma
+            WHERE idioma.nome = ?
+              AND ttitulo.id_idioma = idioma.id
+              AND ct.id_idioma = idioma.id
+        """;
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idIdioma);
-            stmt.setInt(2, idIdioma);
-            stmt.setInt(3, idIdioma);
+
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -47,16 +60,9 @@ public class OrientacaoDAO {
 
     }
 
-    public static int createOrientacao(Scanner input, Tradutor traducao){
+    public static int createOrientacao(Tradutor traducao, int idTipo, int idTitulo, int idConteudo){
         int idGerado = 0;
         try (Connection conn = ConnectionDB.getConnection()) {
-            System.out.println(traducao.getProperty("entrada.id.tipo"));
-            int idTipo = input.nextInt();
-            System.out.println(traducao.getProperty("entrada.id.titulo"));
-            int idTitulo = input.nextInt();
-            System.out.println(traducao.getProperty("entrada.id.conteudo"));
-            int idConteudo = input.nextInt();
-            input.nextLine();
 
             String sql = "INSERT INTO Orientacao (id_tipo, id_titulo, id_conteudo) VALUES (?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
